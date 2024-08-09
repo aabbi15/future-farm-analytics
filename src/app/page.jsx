@@ -143,7 +143,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <ul className="grid gap-6">
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-full border-2 border-black pl-6 pr-0 pb-2 pt-2 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Predictive Analytics</h3>
                       <p className="text-black">
                         Our advanced algorithms analyze market trends and environmental data to predict future prices
@@ -152,7 +152,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-full border-2 border-black pl-6 pr-0 pb-2 pt-2 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Real-time Insights</h3>
                       <p className="text-black">
                         Get instant access to up-to-date information on commodity prices, weather patterns, and market
@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-full border-2 border-black pl-6 pr-0 pb-2 pt-2 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Customizable Alerts</h3>
                       <p className="text-black">
                         Set custom alerts to stay informed about changes in market and optimize your
