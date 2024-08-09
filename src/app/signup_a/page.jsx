@@ -1,12 +1,30 @@
-import GoogleLogin from "@/components/(auth)/GoogleLogin";
-import { Rammetto_One } from "next/font/google";
+"use client"
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase/firebase';
+import GoogleLogin from '@/components/(auth)/GoogleLogin';
+import { Rammetto_One } from 'next/font/google';
 
 const font = Rammetto_One({
     weight: '400',
     subsets: ['latin'],
-})
+});
 
 const AnalystLogin = () => {
+    const router = useRouter();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                router.push('/'); 
+            }
+        });
+
+        return () => unsubscribe();
+    }, [router]);
+
     return (
         <div className="h-dvh w-full flex">
             <div className="w-1/2 bg-cover bg-no-repeat sbgimg p-10">
@@ -22,7 +40,7 @@ const AnalystLogin = () => {
                 <GoogleLogin role="analyst" />
             </div>
         </div>
-    )
+    );
 };
 
 export default AnalystLogin;
