@@ -39,8 +39,6 @@ const GoogleLogin = () => {
     };
 
     const handleRoleSubmit = async () => {
-        if (!role) return;
-
         try {
             const db = getFirestore();
             const userDoc = doc(db, 'users', user.uid);
