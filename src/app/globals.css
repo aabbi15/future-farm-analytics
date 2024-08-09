@@ -2,14 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
+
+.bgimg{
+  background-image: url('https://wallpapers.com/images/hd/agriculture-farming-field-djd3ffforta0zitn.jpg');
 }
