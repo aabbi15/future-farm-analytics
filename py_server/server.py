@@ -1,15 +1,18 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
+from markupsafe import Markup
 import numpy as np
 import pandas as pd
 import pickle
 import statsmodels.api as sm
 from flask_cors import CORS
+from fertilizer_py import fertilizer_dic
+
 
 app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model = pickle.load(open('RandomForest.pkl', 'rb'))
+crop_recommendation_model = pickle.load(open('py_server\RandomForest.pkl', 'rb'))
 
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
@@ -24,9 +27,9 @@ def crop_prediction():
             return jsonify({'error': 'Missing fields in the request'}), 400
 
         # Extract the data
-        N = data['nitrogen']
-        P = data['phosphorous']
-        K = data['pottasium']
+        N = int(data['nitrogen'])
+        P = int(data['phosphorous'])
+        K = int(data['pottasium'])
         temperature = data['temperature']
         humidity = data['humidity']
         ph = data['ph']
@@ -100,6 +103,47 @@ def predict_tomato():
     pred_mean = pred.predicted_mean.tolist()
     
     return jsonify(pred_mean)
+
+@app.route('/fertilizer-predict', methods=['POST'])
+def fert_recommend():
+    # Retrieve JSON data from request
+    data = request.get_json()
+    crop_name = str(data['cropname'])
+    N = int(data['nitrogen'])
+    P = int(data['phosphorous'])
+    K = int(data['pottasium'])
+    # ph = float(data['ph'])
+
+    df = pd.read_csv('fertilizer_csv.csv')
+
+    nr = df[df['Crop'] == crop_name]['N'].iloc[0]
+    pr = df[df['Crop'] == crop_name]['P'].iloc[0]
+    kr = df[df['Crop'] == crop_name]['K'].iloc[0]
+
+    n = nr - N
+    p = pr - P
+    k = kr - K
+    temp = {abs(n): "N", abs(p): "P", abs(k): "K"}
+    max_value = temp[max(temp.keys())]
+    if max_value == "N":
+        if n < 0:
+            key = 'NHigh'
+        else:
+            key = "Nlow"
+    elif max_value == "P":
+        if p < 0:
+            key = 'PHigh'
+        else:
+            key = "Plow"
+    else:
+        if k < 0:
+            key = 'KHigh'
+        else:
+            key = "Klow"
+
+    response = Markup(str(fertilizer_dic[key]))
+
+    return render_template('fertilizer-result.html', recommendation=response)
 
 if __name__ == '__main__':
     app.run(debug=True)
