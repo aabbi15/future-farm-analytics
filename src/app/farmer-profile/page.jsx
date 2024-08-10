@@ -9,8 +9,17 @@ import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import ProfileCard from "@/components/(farmer-dash)/profile-card";
 import CropCard from "@/components/(farmer-dash)/cropcard";
 
+<<<<<<< HEAD
 function FarmerProfile() {
     const [userCrops, setUserCrops] = useState([]);
+=======
+
+function Dash() {
+    const [welcome, Setwelcome] = useState("Good day, Kissan");
+    const [name, Setname] = useState("Kissan");
+    const [location, Setlocation] = useState("Gandhinagar, GJ");
+
+>>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
     const router = useRouter();
 
     const fetchUserData = async () => {

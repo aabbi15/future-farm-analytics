@@ -24,6 +24,13 @@ html {
   background-image: url('https://images.pexels.com/photos/55766/pexels-photo-55766.jpeg?cs=srgb&dl=pexels-pierre-sudre-9695-55766.jpg');
 }
 
+.bentoimg1{
+  background-image: url("/bentoimg1.png");
+}
+
+.bentoimg2{
+  background-image: url("/bentoimg2.jpg");
+}
 
 .Btn {
   width: 45px;

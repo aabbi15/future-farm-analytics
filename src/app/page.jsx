@@ -49,14 +49,22 @@ export default function Home() {
                 </svg>
               </button>
             </div>  */}
+<<<<<<< HEAD
             <div className="lg:flex lg:gap-x-12">
               <a href="#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
               <a href="#" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
               <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
               <a href="#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
+=======
+            <div class="lg:flex lg:gap-x-12">
+              <a href="#keyfeatures" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
+              <a href="/analysis" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
+              <a href="#joinus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
+              <a href="#contactus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
+>>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
             </div>
             <div className="lg:flex lg:flex-1 lg:justify-end">
-              <a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+              <a href="/farmer-profile" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Already have an account ?</a>
             </div>
           </nav>
           {/* <!-- Mobile menu, show/hide based on menu open state. --> */}
@@ -93,26 +101,46 @@ export default function Home() {
           </div> */}
         </header>
 
-        <section className="relative isolate px-6 pt-14 lg:px-8">
+        <section className="relative isolate px-6 lg:px-8">
           <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
             <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
           </div>
-          <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+          <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                <a href="https://github.com/pranshu05/hackout" className="font-semibold">
+                <div className="font-semibold">
                   <div className="flex grid-cols-3">
+<<<<<<< HEAD
                     Checkout our GitHub Repo. <span className="pl-2 pr-2 flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="#888888" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></g></svg></span> <span className="text-[#124b3d]" aria-hidden="true">&rarr;</span>
+=======
+                    Growing Tomorrow&apos;s Harvest Today !
+>>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
                   </div>
-                </a>
+                </div>
               </div>
             </div>
+<<<<<<< HEAD
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-[#124b3d] sm:text-6xl">Unlock the Future of Farming with Farm Future Analytics</h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">Our cutting-edge analytics platform helps farmers and agribusinesses make informed decisions and maximize their yields.</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a href="#joinus" className="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
                 <a href="#keyfeatures" className="text-sm font-semibold leading-6 text-[#124b3d]">Learn more <span aria-hidden="true">→</span></a>
+=======
+            <div class="text-center">
+              <h1 class="text-4xl font-bold tracking-tight text-[#124b3d] sm:text-7xl">Unlock the Future of Farming with Farm Future Analytics</h1>
+              <p class="mt-6 text-lg leading-8 text-gray-600">Our cutting-edge analytics platform helps farmers and agribusinesses make informed decisions and maximize their yields.</p>
+              <div class="mt-8 flex items-center justify-center gap-x-6">
+                <a href="#joinus" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <a href="#keyfeatures" class="text-sm font-semibold leading-6 text-[#124b3d]">Learn more <span aria-hidden="true">→</span></a>
+>>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+              </div>
+              <div className="hidden sm:mt-4 sm:flex sm:justify-center">
+                  <a href="https://github.com/pranshu05/hackout" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">
+                    <div className="flex grid-cols-3">
+                      Checkout our GitHub Repo ! <span className="pl-2 pr-2 flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></g></svg></span> <span className="text-[#124b3d]" aria-hidden="true">&rarr;</span>
+                    </div>
+                  </a>
               </div>
             </div>
           </div>
@@ -190,9 +218,18 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
+<<<<<<< HEAD
               <a href="#" className="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+=======
+              <a href="/signup" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+>>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
                 Join Us
               </a>
+              <p className="pt-2">
+                <a href="/farmer-profile" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">
+                  Already have an account ?
+                </a>
+              </p>
               <p className="text-xs pt-2 text-[#124b3d]">
                 Sign up to get started with Farm Future Analytics.{" "}
                 <a href="#" className="underline underline-offset-2">
@@ -210,7 +247,7 @@ export default function Home() {
                 Contact Us
               </h2>
               <p className="mx-auto max-w-[600px] text-[#124b3d] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.
+                Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.
               </p>
             </div>
             <div className="mx-auto w-fit max-w-sm space-y-2">

@@ -36,7 +36,7 @@ export default function StatePrice() {
             setLoading(false);
         });
 
-        return () => unsubscribe(); // Cleanup the listener on component unmount
+        return () => unsubscribe();
     }, []);
 
     if (loading) {
