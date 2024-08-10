@@ -61,8 +61,8 @@ function Dash() {
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-x-2">
-                                    <button type="button" className="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-                                        Go to Profile
+                                    <button type="button" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">
+                                        <a href="/farmer-profile">Go to Profile</a>
                                     </button>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@ function Dash() {
                                             <div className="p-4 bg-green-100 rounded-xl">
                                                 <div className="font-bold text-xl text-gray-800 leading-none">See the latest news from <br /> <div className="pt-1.5"> Future Farm! </div></div>
                                                 <div className="mt-5">
-                                                    <button type="button" className="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition">
-                                                        Read more
+                                                    <button type="button" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">
+                                                        <a href='/farmer-news'>Read more</a>
                                                     </button>
                                                 </div>
                                             </div>
