@@ -1,16 +1,9 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import {
-    LineChart,
-    Line,
-    CartesianGrid,
-    XAxis,
-    YAxis,
-    Tooltip,
-    Legend,
-    Label
-} from 'recharts';
+import { auth } from '@/firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, } from 'recharts';
 import { Poppins } from "next/font/google";
 
 const font = Poppins({
@@ -20,18 +13,7 @@ const font = Poppins({
 
 function LeafIcon(props) {
     return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
+        <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
             <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
         </svg>
@@ -40,15 +22,24 @@ function LeafIcon(props) {
 
 const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
 
-
 const RenderLineChart = () => {
-
     const [state, setState] = useState('');
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const [stateData, setStateData] = useState(null);
+    const [isSignedIn, setIsSignedIn] = useState(false)
 
     useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                setIsSignedIn(true);
+            } else {
+                setIsSignedIn(false);
+            }
+        });
+        return () => unsubscribe();
+    });
 
+    useEffect(() => {
         let data = fetch('/2014-2024.json')
             .then(res => res.json())
             .then(data => {
@@ -65,7 +56,6 @@ const RenderLineChart = () => {
                             date: entry.Date,
                             value: entry[state]
                         }));
-                        console.log(filteredData);
                         setStateData(filteredData);
                     }
                 }
@@ -94,13 +84,13 @@ const RenderLineChart = () => {
                         </a>
                     </div>
                     <div className="lg:flex lg:gap-x-12">
-                        <a href="/#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
-                        <a href="/analysis" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
-                        <a href="/#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
-                        <a href="/#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
+                        <a href="/#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Features</a>
+                        <a href="/analysis" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Analysis</a>
+                        {!isSignedIn && <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Join</a>}
+                        <a href="/#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Contact</a>
                     </div>
                     <div className="lg:flex lg:flex-1 lg:justify-end">
-                        <a href="/farmer-profile" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Already have an account ?</a>
+                        {!isSignedIn ? <a href="/signup" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Sign Up</a> : <a href="/farmer-dashboard" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Dashboard</a>}
                     </div>
                 </nav>
             </header>
@@ -113,13 +103,8 @@ const RenderLineChart = () => {
                                 <p>Enhance your crop management with our custom solutions like Crop Prediction and Price Monitoring. Make informed decisions for better yields.</p>
                             </div>
                         </div>
-
-                        <div className="col-span-2 row-span-2 bentoimg2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md">
-                        </div>
-
-                        <div className="col-span-1 row-span-5 bentoimg1 bg-no-repeat bg-cover rounded-lg shadow-md">
-                        </div>
-
+                        <div className="col-span-2 row-span-2 bentoimg2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md"></div>
+                        <div className="col-span-1 row-span-5 bentoimg1 bg-no-repeat bg-cover rounded-lg shadow-md"></div>
                         <div id="bento-1" className="col-span-3 row-span-5 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
                             <div>
                                 <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
@@ -131,26 +116,9 @@ const RenderLineChart = () => {
                                         ))}
                                     </select>
                                 </div>
-                                <LineChart width={dimensions.width} height={dimensions.height} data={stateData}
-                                    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                                    <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="date" interval={11}></XAxis>
-                                    <YAxis />
-                                    <Tooltip />
-                                    {/* <Legend /> */}
-                                    <Line type="monotone" dataKey="value" stroke="#8884d8" dot={<></>} />
-                                    {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
-                                </LineChart>
+                                <LineChart width={dimensions.width} height={dimensions.height} data={stateData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}><CartesianGrid strokeDasharray="3 3" /><XAxis dataKey="date" interval={11}></XAxis><YAxis /><Tooltip /><Line type="monotone" dataKey="value" stroke="#8884d8" dot={<></>} /></LineChart>
                             </div>
                         </div>
-
-                        {/* <div className="col-span-1 row-span-1 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p className={`text-md font-bold tracking-tight text-[#124b3d] ${font.className}`}>Growing Tomorrow&apos;s Harvest Today !</p>
-                        </div>
-
-                        <div className="col-span-2 row-span-1 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p className={`text-xl font-bold tracking-tight text-[#124b3d] ${font.className}`}>Dataset :</p> <a className='text-xl hover:underline underline-offset-4' href='https://consumeraffairs.nic.in/'>https://consumeraffairs.nic.in/</a>
-                        </div> */}
                     </div>
                 </div>
             </section>

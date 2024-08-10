@@ -5,21 +5,19 @@ import { usePathname } from 'next/navigation'
 
 
 export default function Sidefarm() {
-    const router = useRouter(); // Access router object
-
-    const pathname = usePathname(); // Access pathname
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handleSignOut = async () => {
         try {
             await auth.signOut();
+            router.push('/')
         } catch (error) {
             console.error(error.message);
         }
     };
 
-    // Helper function to determine if the link is active
     const isActive = (path) => {
-
         console.log(pathname, path);
         return pathname === path;
     };
@@ -33,7 +31,6 @@ export default function Sidefarm() {
                     </div>
                     <div className="p-4">
                         <ul className="space-y-1">
-                            {/* Dynamically set the active class based on current route */}
                             <li>
                                 <a href="/farmer-dashboard" className={`flex bg-white rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/farmer-dashboard') ? 'bg-yellow-200' : '  hover:bg-yellow-50 '}`}>
                                     <Image src="/home.png" alt="" width={20} height={20} className="mr-4" />Home

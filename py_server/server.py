@@ -83,12 +83,27 @@ def predict_wheat():
     
     # Make predictions
     pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean
+    pred_mean = pred.predicted_mean.tolist()
+    
+    return jsonify(pred_mean)
 
-    # Create a dictionary with date:price pairs
-    pred_dict = {date.strftime("%d:%m:%y"): price for date, price in pred_mean.items()}
-    print(pred_dict)
-    return jsonify(pred_dict)
+@app.route('/tomato-price-predict', methods=['POST'])
+def predict_tomato():
+    data = request.json
+    state = data.get('state', 'Bihar')
+    
+    # Load the dataset
+    df2 = pd.read_excel('tomatoall.xlsx', index_col='Date', parse_dates=True)
+    
+    # Build and fit the SARIMAX model
+    model = sm.tsa.statespace.SARIMAX(df2[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    results = model.fit()
+    
+    # Make predictions
+    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean.tolist()
+    
+    return jsonify(pred_mean)
 
 if __name__ == '__main__':
     app.run(debug=True)
