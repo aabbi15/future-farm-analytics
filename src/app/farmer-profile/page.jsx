@@ -12,8 +12,8 @@ import CropCard from "@/components/(farmer-dash)/cropcard";
 
 
 function Dash() {
-    const [welcome, Setwelcome] = useState("Good day, Kristin");
-    const [name, Setname] = useState("Kristin");
+    const [welcome, Setwelcome] = useState("Good day, Kissan");
+    const [name, Setname] = useState("Kissan");
     const [location, Setlocation] = useState("Gandhinagar, GJ");
 
     const router = useRouter();
