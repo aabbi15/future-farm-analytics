@@ -59,9 +59,7 @@ function FarmerProfile() {
                                     userCrops.map((crop, index) => (
                                         <CropCard key={index} cropname={crop} />
                                     ))
-                                ) : (
-                                    <p>No crops found.</p>
-                                )}
+                                ) : (<p>No crops found.</p>)}
                             </div>
                         </div>
                     </div>

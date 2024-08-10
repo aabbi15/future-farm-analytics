@@ -26,22 +26,22 @@ const FarmerLogin = () => {
 
     return (
         <div className="h-dvh w-full flex">
-            <div className="w-full grid grid-cols-2 bg-cover bg-no-repeat sbgimg">
-                <div className="my-20 text-[black] w-4/5 p-10">
-                    <h2 className="text-5xl font-extrabold mb-4">Empowering Farmers!</h2>
-                    <p className=" text-2xl mt-2">
-                        Using AI, we give simple advice to help farmers plan better, keep stocks, and avoid big price changes. Growing Tomorrow&apos;s Harvest Today
+            <div className="w-1/2 bg-cover bg-no-repeat sbgimg p-10">
+                <div className="w-1/2">
+                    <h2 className="text-3xl font-extrabold mb-4">Empowering Farmers!</h2>
+                    <p className="text-lg font-semibold mt-2">
+                        Using AI, we give simple advice to help farmers plan better, keep stocks, and avoid big price changes. Growing Tomorrow&apos;s Harvest Today.
                     </p>
                 </div>
-                <div className="w-full bg-[#f0f4d4c2] backdrop-blur-[2px] float-right justify-center items-center">
-                    <div className='h-1/2 flex justify-center gap-4 p-10'>
-                        <LeafIcon className="h-8 w-auto text-[#124b3d]" />
-                        <h1 className={`text-4xl ${font.className}`}>Farm Future Analytics</h1>
-                    </div>
-                    <div className='h-1/2 flex items-center flex-col gap-4'>
-                        <h1 className={`text-3xl ${font.className}`}>JOIN US AS FARMER</h1>
-                        <GoogleLogin role="analyst" />
-                    </div>
+            </div>
+            <div className="w-1/2 float-right flex flex-col gap-4 justify-center items-centerr">
+                <div className='h-1/2 flex justify-center gap-4 p-10'>
+                    <LeafIcon className="h-8 w-auto text-[#124b3d]" />
+                    <h1 className={`text-4xl ${font.className}`}>Farm Future Analytics</h1>
+                </div>
+                <div className='h-1/2 flex items-center flex-col gap-4'>
+                    <h1 className={`text-3xl ${font.className}`}>JOIN US AS FARMER</h1>
+                    <GoogleLogin role="analyst" />
                 </div>
             </div>
         </div>
