@@ -111,21 +111,21 @@ export default function StatePrice() {
 
                 <section className='relative h-full w-full isolate px-6 pt-5 lg:px-8'>
                     <div className="flex h-full w-full items-center justify-center">
-                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-13 rounded-lg">
-                            <div className="col-span-2 row-span-3 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
+                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-8 rounded-lg">
+                            <div className="col-span-2 row-span-2 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>1. Strategic Selling:</b><br />
                                     Predictive models help farmers identify the best times to sell crops for maximum profit. By storing produce and selling when prices peak, farmers can increase revenue significantly.
                                 </p>
                             </div>
-                            <div className="col-span-2 row-span-3 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md flex justify-center items-center p-4">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>2. Financial Planning and Investment:</b><br />
                                     Accurate price forecasts enable better budgeting for seeds, fertilizers, and labor. This reduces cash flow risks and lowers overall costs.
                                 </p>
                             </div>
-                            <div id="predictgraph" className="col-span-4 row-span-5 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
-                                <div>
+                            <div id="predictgraph" className="col-span-4 row-span-4 bg-lime-200 rounded-lg shadow-md">
+                                <div className='w-full h-full'>
                                     <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
                                         <h1 className={`text-2xl ${font.className}`}>Rice Price 2020-2024</h1>
                                     </div>
@@ -142,13 +142,13 @@ export default function StatePrice() {
                                 </div>
                             </div>
 
-                            <div className="col-span-2 row-span-3 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>3. Negotiating Power and Entering Contracts:</b><br />
                                     Farmers can use price forecasts to negotiate better deals and secure favorable contracts, reducing income volatility.
                                 </p>
                             </div>
-                            <div className="col-span-2 row-span-3 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>4. Risk Mitigation through Crop Diversification:</b><br />
                                     Price predictions guide farmers in diversifying crops, reducing reliance on a single income source and decreasing income variability.
