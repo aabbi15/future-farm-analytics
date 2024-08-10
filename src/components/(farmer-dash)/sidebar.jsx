@@ -18,7 +18,6 @@ export default function Sidefarm() {
     };
 
     const isActive = (path) => {
-        console.log(pathname, path);
         return pathname === path;
     };
 

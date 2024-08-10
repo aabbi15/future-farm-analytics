@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { auth } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import Contact from '@/components/(homepage)/contactus';
 
 function LeafIcon(props) {
     return (
@@ -137,7 +138,7 @@ export default function Home() {
                         </div>
                     </section>
                 )}
-                <section id="contactus" className="w-full pt-[120px] pb-24 bg-[#f0f4d4] border-t">
+                {/* <section id="contactus" className="w-full pt-[120px] pb-24 bg-[#f0f4d4] border-t">
                     <div className="flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
                         <div className="space-y-3 bg-[#b1d4c7] rounded-xl p-4">
                             <div className="space-y-3 bg-[#b1d4c7] rounded-xl p-4">
@@ -158,7 +159,10 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> */}
+
+
+                <Contact/>
                 <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#f0f4d4]">
                     <p className="text-xs text-[#124b3d]">&copy; 2024 Farm Future Analytics. All rights reserved.</p>
                     <nav className="sm:ml-auto flex gap-4 sm:gap-6">
