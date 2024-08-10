@@ -42,7 +42,7 @@ function WeatherCard({ loc }) {
                 <h2 className="text-md mb-2 px-4 pt-4">
                     <div className="flex justify-between">
                         <div className="badge relative top-0">
-                            <span className="mt-2 py-1 h-12px text-md font-semibold w-12px rounded right-1 bottom-1 px-4">{data.loc || 'Laghouat'}</span>
+                            <span className="mt-2 py- h-12px text-md font-bold w-12px rounded right-1 bottom-1 px-4">{loc.toUpperCase()|| 'Gujarat'}</span>
                         </div>
                         <span className="text-lg font-bold ">{mydate || '6:13'}</span>
                     </div>

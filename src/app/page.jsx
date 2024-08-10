@@ -119,7 +119,7 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="mx-auto w-full max-w-sm space-y-2">
-                            <a href="/signup" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <a href="/signup" className="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 Join Us
                             </a>
                             <p className="pt-2">
