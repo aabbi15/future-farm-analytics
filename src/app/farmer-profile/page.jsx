@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { auth } from '@/firebase/firebase';
 import Farmerhead from "@/components/(farmer-dash)/header";
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import DateDisplay from "@/components/(farmer-dash)/currdate";
