@@ -9,20 +9,20 @@ const CalendarIcon = () => (
 
 // DateDisplay Component
 const DateDisplay = () => {
-  // Get today's date in the format 'Month Day, Year'
-  const today = new Date();
-  const formattedDate = today.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
+    // Get today's date in the format 'Month Day, Year'
+    const today = new Date();
+    const formattedDate = today.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
 
-  return (
-    <div className="flex items-center p-2">
-      <CalendarIcon />
-      <span className="pl-1.5">{formattedDate}</span>
-    </div>
-  );
+    return (
+        <div className="flex items-center p-2">
+            <CalendarIcon />
+            <span className="pl-1.5">{formattedDate}</span>
+        </div>
+    );
 };
 
 export default DateDisplay;

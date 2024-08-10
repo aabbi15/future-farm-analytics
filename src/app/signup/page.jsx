@@ -1,11 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../firebase/firebase';
-import GoogleLogin from '@/components/(auth)/GoogleLogin';
-import { Rammetto_One } from 'next/font/google';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import GoogleLogin from "@/components/(auth)/GoogleLogin";
+import { Rammetto_One } from "next/font/google";
 
 const font = Rammetto_One({
     weight: '400',
@@ -32,18 +30,10 @@ function LeafIcon(props) {
     )
   }
 
-const AnalystLogin = () => {
+const FarmerLogin = () => {
     const router = useRouter();
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                router.push('/'); 
-            }
-        });
-
-        return () => unsubscribe();
-    }, [router]);
+    onAuthStateChanged(getAuth(), (user) => user && router.push('/signup_form'));
 
     return (
         <div className="h-dvh w-full flex">
@@ -60,7 +50,7 @@ const AnalystLogin = () => {
                         <h1 className={`text-4xl ${font.className}`}>Farm Future Analytics</h1>
                     </div>
                     <div className='h-1/2 flex items-center flex-col gap-4'>
-                        <h1 className={`text-3xl ${font.className}`}>JOIN US AS AN ANALYST</h1>
+                        <h1 className={`text-3xl ${font.className}`}>JOIN US AS FARMER</h1>
                         <GoogleLogin role="analyst" />
                     </div>
                 </div>
@@ -69,4 +59,4 @@ const AnalystLogin = () => {
     );
 };
 
-export default AnalystLogin;
+export default FarmerLogin;
