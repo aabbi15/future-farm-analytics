@@ -1,7 +1,6 @@
 "use client"
 
 import Image from 'next/image';
-import { useState } from "react";
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import Farmerhead from "@/components/(farmer-dash)/header";
@@ -10,22 +9,18 @@ import DateDisplay from "@/components/(farmer-dash)/currdate";
 
 
 function Dash() {
-    const [welcome, Setwelcome] = useState("Good day, Kristin");
-    const [name, Setname] = useState("Kristin");
-    const [location, Setlocation] = useState("Gandhinagar, GJ");
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
 
     return (
-        <body className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
+        <div className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
             {/* <Farmerhead section = "Home"/>S */}
             <Sidefarm />
-            <main className="ml-60 pt-10 max-h-screen overflow-auto">
+            <div className="ml-60 pt-10 max-h-screen overflow-auto">
                 <div className="px-6 py-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
-                            <h1 className="text-3xl font-bold mb-10">{welcome}</h1>
                             <div className="flex items-center justify-between">
                                 <div className="">
                                     <div className="flex items-stretch pt-4">
@@ -116,8 +111,8 @@ function Dash() {
                         </div>
                     </div>
                 </div>
-            </main>
-        </body>
+            </div>
+        </div>
     )
 }
 
