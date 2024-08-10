@@ -38,9 +38,16 @@ export default function Sidefarm() {
                             </li>
                             <li>
                                 <a href="/crop-analysis" className={`flex bg-white    rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/crop-analysis') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
-                                    <Image src="/magnify.png" alt="" width={20} height={20} className="mr-4" />Personalized Analysis
+                                    <Image src="/magnify.png" alt="" width={20} height={20} className="mr-4" />My Price Analysis
                                 </a>
                             </li>
+
+                            <li>
+                                <a href="/soil-analysis" className={`flex items-center bg-white rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/soil-analysis') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
+                                    <Image src="/npk.png" alt="" width={20} height={20} className="mr-4" />N-P-K Soil Analysis
+                                </a>
+                            </li>
+
                             <li>
                                 <a href="/alerts" className={`flex bg-white    rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/alerts') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
                                     <Image src="/notify.png" alt="" width={20} height={20} className="mr-4" />All Alerts
