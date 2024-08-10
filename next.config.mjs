@@ -7,6 +7,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'avatars.githubusercontent.com'
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.weatherapi.com'
+            }
         ],
     },
     env: {
@@ -19,6 +23,7 @@ const nextConfig = {
         MESSAGING_SENDER_ID: process.env.MESSAGING_SENDER_ID,
         APP_ID: process.env.APP_ID,
         MEASUREMENT_ID: process.env.MEASUREMENT_ID,
+        NEWS_KEY: process.env.NEWS_KEY,
     },
 };
 

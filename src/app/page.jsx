@@ -6,6 +6,9 @@ const font = Rammetto_One({
 })
 
 function LeafIcon(props) {
+
+ 
+
   return (
     <svg
       {...props}
@@ -41,8 +44,8 @@ export default function Home() {
             {/* <div className="flex lg:hidden">
               <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
                 <span className="sr-only">Open main menu</span>
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
               </button>
             </div>  */}
@@ -68,8 +71,8 @@ export default function Home() {
                 </a>
                 <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
                   <span className="sr-only">Close menu</span>
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
@@ -204,7 +207,7 @@ export default function Home() {
               </p>
               <p className="text-xs pt-2 text-[#124b3d]">
                 Sign up to get started with Farm Future Analytics.{" "}
-                <a href="#" className="underline underline-offset-2" prefetch={false}>
+                <a href="#" className="underline underline-offset-2">
                   Terms &amp; Conditions
                 </a>
               </p>
@@ -236,13 +239,13 @@ export default function Home() {
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#f0f4d4]">
           <p className="text-xs text-[#124b3d]">&copy; 2024 Farm Future Analytics. All rights reserved.</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Terms of Service
             </a>
-            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Privacy
             </a>
-            <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Contact
             </a>
           </nav>
