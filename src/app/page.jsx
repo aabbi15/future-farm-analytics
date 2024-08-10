@@ -47,10 +47,10 @@ export default function Home() {
               </button>
             </div>  */}
             <div class="lg:flex lg:gap-x-12">
-              <a href="#" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Product</a>
-              <a href="#" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
-              <a href="#" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Marketplace</a>
-              <a href="#" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Company</a>
+              <a href="#keyfeatures" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
+              <a href="#" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
+              <a href="#joinus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
+              <a href="#contactus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
             </div>
             <div class="lg:flex lg:flex-1 lg:justify-end">
               <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
@@ -108,7 +108,7 @@ export default function Home() {
               <h1 class="text-4xl font-bold tracking-tight text-[#124b3d] sm:text-6xl">Unlock the Future of Farming with Farm Future Analytics</h1>
               <p class="mt-6 text-lg leading-8 text-gray-600">Our cutting-edge analytics platform helps farmers and agribusinesses make informed decisions and maximize their yields.</p>
               <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+                <a href="#joinus" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
                 <a href="#keyfeatures" class="text-sm font-semibold leading-6 text-[#124b3d]">Learn more <span aria-hidden="true">→</span></a>
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <ul className="grid gap-6">
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Predictive Analytics</h3>
                       <p className="text-black">
                         Our advanced algorithms analyze market trends and environmental data to predict future prices
@@ -152,7 +152,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Real-time Insights</h3>
                       <p className="text-black">
                         Get instant access to up-to-date information on commodity prices, weather patterns, and market
@@ -161,7 +161,7 @@ export default function Home() {
                     </div>
                   </li>
                   <li>
-                    <div className="bg-[#b1d4c7] rounded-xl p-6 grid gap-1">
+                    <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 grid gap-1">
                       <h3 className="text-xl font-bold text-[#124b3d]">Customizable Alerts</h3>
                       <p className="text-black">
                         Set custom alerts to stay informed about changes in market and optimize your
@@ -170,6 +170,52 @@ export default function Home() {
                     </div>
                   </li>
                 </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="joinus" className="w-full pb-24 pt-24 bg-[#f0f4d4] border-t">
+          <div className="flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#124b3d]">
+                Join the Future of Farming
+              </h2>
+              <p className="mx-auto max-w-[600px] text-[#124b3d] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Sign up for our platform and start making data-driven decisions to improve your yields and
+                profitability.
+              </p>
+            </div>
+            <div className="mx-auto w-full max-w-sm space-y-2">
+              <a href="#" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Join Us
+              </a>
+              <p className="text-xs pt-2 text-[#124b3d]">
+                Sign up to get started with Farm Future Analytics.{" "}
+                <a href="#" className="underline underline-offset-2" prefetch={false}>
+                  Terms &amp; Conditions
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contactus" className="w-full pt-[120px] pb-24 bg-[#f0f4d4] border-t">
+          <div className="flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#124b3d]">
+                Contact Us
+              </h2>
+              <p className="mx-auto max-w-[600px] text-[#124b3d] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.
+              </p>
+            </div>
+            <div className="mx-auto w-fit max-w-sm space-y-2">
+              <div className="pt-2 text-left text-[#124b3d]">
+                <p>Address       : F114, HoR MEN, DA-IICT</p>
+                <p>Phone Number  : +91 6354152418</p>
+                <p>Email Address : 202301143@daiict.ac.in</p>
+                <p>Website       : localhost:3000</p>
               </div>
             </div>
           </div>
@@ -184,7 +230,7 @@ export default function Home() {
             <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
               Privacy
             </a>
-            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
               Contact
             </a>
           </nav>
