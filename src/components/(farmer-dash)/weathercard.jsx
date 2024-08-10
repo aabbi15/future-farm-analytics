@@ -9,9 +9,8 @@ function WeatherCard({ loc }) {
     console.log(mydate);
 
 
-    loc = "delhi";
+    // loc = "delhi";
     useEffect(() => {
-        console.log("hello");
         const fetchData = async () => {
             const url = `https://api.weatherapi.com/v1/forecast.json?key=538023bd3c43455084733202231905&q=${loc}&days=1&aqi=yes&alerts=yes`; // Replace with your actual URL
             try {

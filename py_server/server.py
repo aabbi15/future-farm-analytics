@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model = pickle.load(open('py_server\RandomForest.pkl', 'rb'))
+crop_recommendation_model = pickle.load(open('RandomForest.pkl', 'rb'))
 
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
@@ -46,7 +46,7 @@ def crop_prediction():
         print(f"Error during prediction: {e}")
         return jsonify({'error': str(e)}), 500
 
-# Handle time series prediction
+# Handle time series prediction for rice
 @app.route('/rice-price-predict', methods=['POST'])
 def predict_rice():
     data = request.json
@@ -60,11 +60,15 @@ def predict_rice():
     results = model.fit()
     
     # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean.tolist()
-    
-    return jsonify(pred_mean)
+    pred = results.get_prediction(start=pd.to_datetime('2024-08-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean
 
+    # Create a dictionary with date:price pairs
+    pred_dict = {date.strftime("%d/%m/%Y"): price for date, price in pred_mean.items()}
+    
+    return jsonify(pred_dict)
+
+# Handle time series prediction for wheat
 @app.route('/wheat-price-predict', methods=['POST'])
 def predict_wheat():
     data = request.json
@@ -78,10 +82,13 @@ def predict_wheat():
     results = model.fit()
     
     # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean.tolist()
-    
-    return jsonify(pred_mean)
+    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean
+
+    # Create a dictionary with date:price pairs
+    pred_dict = {date.strftime("%d:%m:%y"): price for date, price in pred_mean.items()}
+    print(pred_dict)
+    return jsonify(pred_dict)
 
 if __name__ == '__main__':
     app.run(debug=True)
