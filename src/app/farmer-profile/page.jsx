@@ -5,9 +5,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase/firebase';
-import Farmerhead from "@/components/(farmer-dash)/header";
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
-import DateDisplay from "@/components/(farmer-dash)/currdate";
 import ProfileCard from "@/components/(farmer-dash)/profile-card";
 import CropCard from "@/components/(farmer-dash)/cropcard";
 

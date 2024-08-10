@@ -3,11 +3,13 @@ import numpy as np
 import pandas as pd
 import pickle
 import statsmodels.api as sm
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model_path = 'models/RandomForest.pkl'
+crop_recommendation_model_path = 'RandomForest.pkl'
 crop_recommendation_model = pickle.load(open(crop_recommendation_model_path, 'rb'))
 
 # Handle crop prediction
@@ -36,15 +38,18 @@ def crop_prediction():
 # Handle time series prediction
 @app.route('/predict', methods=['POST'])
 def predict():
-    # Load and preprocess data
-    df = pd.read_excel('Final DataSet.xlsx', index_col='Date', parse_dates=True)
-    df['Bihar Price First Difference'] = df['Bihar'] - df['Bihar'].shift(1)
+    data = request.json
+    state = data.get('state', 'Bihar')
     
-    # Fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df['Bihar'], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    # Load the dataset
+    df = pd.read_excel('Final DataSet.xlsx', index_col='Date', parse_dates=True)
+    df[f'{state} Price First Difference'] = df[state] - df[state].shift(1)
+    
+    # Build and fit the SARIMAX model
+    model = sm.tsa.statespace.SARIMAX(df[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
     results = model.fit()
     
-    # Prediction
+    # Make predictions
     pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
     pred_mean = pred.predicted_mean.tolist()
     

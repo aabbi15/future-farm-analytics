@@ -14,7 +14,6 @@ export default function ProfileCard() {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
-                console.log("User logged in: ", user);
                 try {
                     const userDocRef = doc(db, "users", user.uid);
                     const userDoc = await getDoc(userDocRef);
@@ -26,7 +25,6 @@ export default function ProfileCard() {
                         setUserName(userName);
                         setUserCity(userCity);
                         setEmail(email);
-                        console.log("User data: ", userName, userCity, email);
                     }
                 } catch (error) {
                     console.error("Error fetching user data: ", error);
@@ -34,7 +32,6 @@ export default function ProfileCard() {
                     setLoading(false);
                 }
             } else {
-                console.log("No user is logged in");
                 setLoading(false);
             }
         });
