@@ -48,16 +48,24 @@ const RenderLineChart = () => {
 
     useEffect(() => {
 
-        console.log(state);
         let data = fetch('/2014-2024.json')
         .then(res=>res.json())
         .then(data=>{
             if (state && data.Sheet1) {
-                const filteredData = data.Sheet1.map(entry => ({
-                    date: entry.date,
-                    value: entry[state]
-                }));
-                setStateData(filteredData);
+                if(state == "Other"){
+                    const filteredData = data.Sheet1.map(entry => ({
+                        date: entry.date,
+                        value: entry["All India Average"]
+                    }));
+                    setStateData(filteredData);
+                }
+                else{
+                    const filteredData = data.Sheet1.map(entry => ({
+                        date: entry.date,
+                        value: entry[state]
+                    }));
+                    setStateData(filteredData);
+                }
             }
         })
 
@@ -78,7 +86,7 @@ const RenderLineChart = () => {
             <header className="absolute inset-x-0 top-0 z-50">
                 <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
-                        <a href="#" className="-m-1.5 p-1.5">
+                        <a href="/" className="-m-1.5 p-1.5">
                             <span className="sr-only">Farm Future Analytics</span>
                             <LeafIcon className="h-8 w-auto text-[#124b3d]" />
                         </a>
@@ -104,14 +112,13 @@ const RenderLineChart = () => {
                             </div>
                         </div>
 
-                        <div className="col-span-2 row-span-2 bg-yellow-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p>Broccoli</p>
+                        <div className="col-span-2 row-span-2 bentoimg2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md">
                         </div>
 
                         <div className="col-span-1 row-span-5 bentoimg1 bg-no-repeat bg-cover rounded-lg shadow-md">
                         </div>
 
-                        <div id="bento-1" className="col-span-2 row-span-4 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
+                        <div id="bento-1" className="col-span-3 row-span-4 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
                             <div>
                                 <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
                                     <h1 className={`text-2xl ${font.className}`}>Rice Price 2014-2024</h1>
@@ -135,16 +142,12 @@ const RenderLineChart = () => {
                             </div>
                         </div>
 
-                        <div className="col-span-1 row-span-4 bg-green-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p>Edamame</p>
-                        </div>
-
                         <div className="col-span-1 row-span-1 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p>Tomato</p>
+                            <p className={`text-md font-bold tracking-tight text-[#124b3d] ${font.className}`}>Growing Tomorrow&apos;s Harvest Today !</p>
                         </div>
 
                         <div className="col-span-2 row-span-1 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
-                            <p>Tofu</p>
+                            <p className={`text-xl font-bold tracking-tight text-[#124b3d] ${font.className}`}>Dataset :</p> <a className='text-xl hover:underline underline-offset-4' href='https://consumeraffairs.nic.in/'>https://consumeraffairs.nic.in/</a>
                         </div>
                     </div>
                 </div>

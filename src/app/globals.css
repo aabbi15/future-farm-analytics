@@ -28,6 +28,9 @@ html {
   background-image: url("/bentoimg1.png");
 }
 
+.bentoimg2{
+  background-image: url("/bentoimg2.jpg");
+}
 
 .Btn {
   width: 45px;
