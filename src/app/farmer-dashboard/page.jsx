@@ -130,7 +130,7 @@ function Dash() {
 
                                     </div>
                                 </div>
-                                <WeatherCard loc={location} />
+                                <WeatherCard loc={userCity} />
                             </div>
                         </div>
                     </div>
