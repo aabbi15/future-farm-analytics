@@ -29,7 +29,7 @@ export default function Sidefarm() {
             <div className="flex flex-col justify-between h-full">
                 <div className="flex-grow">
                     <div className="px-4 py-6 text-center border-b">
-                        <h1 className="text-xl font-bold leading-none"><span className="text-yellow-700">Farm Future</span> Analytics</h1>
+                        <a href="/" className="text-xl font-bold leading-none text-[#124b3d]">Farm Future Analytics</a>
                     </div>
                     <div className="p-4">
                         <ul className="space-y-1">

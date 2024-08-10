@@ -34,7 +34,7 @@ const FarmerLogin = () => {
                     </p>
                 </div>
                 <div className="w-full bg-[#f0f4d4c2] backdrop-blur-[2px] float-right justify-center items-center">
-                    <div className='h-1/2 flex items-center flex-col gap-4 p-10'>
+                    <div className='h-1/2 flex justify-center gap-4 p-10'>
                         <LeafIcon className="h-8 w-auto text-[#124b3d]" />
                         <h1 className={`text-4xl ${font.className}`}>Farm Future Analytics</h1>
                     </div>
