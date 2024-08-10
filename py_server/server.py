@@ -33,9 +33,6 @@ def crop_prediction():
         ph = data['ph']
         rainfall = data['rainfall']
 
-        # Debugging output
-        print(f"Received data: N={N}, P={P}, K={K}, Temperature={temperature}, Humidity={humidity}, pH={ph}, Rainfall={rainfall}")
-
         # Create an array for prediction
         prediction_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
 
@@ -51,17 +48,34 @@ def crop_prediction():
         return jsonify({'error': str(e)}), 500
 
 # Handle time series prediction
-@app.route('/predict', methods=['POST'])
+@app.route('/rice-price-predict', methods=['POST'])
 def predict():
     data = request.json
     state = data.get('state', 'Bihar')
     
     # Load the dataset
-    df = pd.read_excel('Final DataSet.xlsx', index_col='Date', parse_dates=True)
-    df[f'{state} Price First Difference'] = df[state] - df[state].shift(1)
+    df1 = pd.read_excel('Final DataSet.xlsx', index_col='Date', parse_dates=True)
     
     # Build and fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    model = sm.tsa.statespace.SARIMAX(df1[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    results = model.fit()
+    
+    # Make predictions
+    pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean.tolist()
+    
+    return jsonify(pred_mean)
+
+@app.route('/wheat-price-predict', methods=['POST'])
+def predict():
+    data = request.json
+    state = data.get('state', 'Bihar')
+    
+    # Load the dataset
+    df2 = pd.read_excel('wheatall.xlsx', index_col='Date', parse_dates=True)
+    
+    # Build and fit the SARIMAX model
+    model = sm.tsa.statespace.SARIMAX(df2[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
     results = model.fit()
     
     # Make predictions
