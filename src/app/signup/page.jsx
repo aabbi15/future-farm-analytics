@@ -1,29 +1,18 @@
 "use client"
 
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../firebase/firebase';
-import GoogleLogin from '@/components/(auth)/GoogleLogin';
-import { Rammetto_One } from 'next/font/google';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import GoogleLogin from "@/components/(auth)/GoogleLogin";
+import { Rammetto_One } from "next/font/google";
 
 const font = Rammetto_One({
     weight: '400',
     subsets: ['latin'],
-});
+})
 
-const AnalystLogin = () => {
+const FarmerLogin = () => {
     const router = useRouter();
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                router.push('/'); 
-            }
-        });
-
-        return () => unsubscribe();
-    }, [router]);
+    onAuthStateChanged(getAuth(), (user) => user && router.push("/"));
 
     return (
         <div className="h-dvh w-full flex">
@@ -36,11 +25,11 @@ const AnalystLogin = () => {
                 </div>
             </div>
             <div className="w-1/2 float-right flex flex-col gap-4 justify-center items-center">
-                <h1 className={`text-4xl ${font.className}`}>JOIN US AS AN ANALYST</h1>
-                <GoogleLogin role="analyst" />
+                <h1 className={`text-4xl ${font.className}`}>JOIN US AS A FARMER</h1>
+                <GoogleLogin role="farmer" />
             </div>
         </div>
-    );
+    )
 };
 
-export default AnalystLogin;
+export default FarmerLogin;
