@@ -41,11 +41,11 @@ export default function Home() {
                         <div className="lg:flex lg:gap-x-12">
                             <a href="#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Features</a>
                             <a href="/analysis" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Analysis</a>
-                            <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Join</a>
+                            {!isSignedIn && <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Join</a>}
                             <a href="#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Contact</a>
                         </div>
                         <div className="lg:flex lg:flex-1 lg:justify-end">
-                            {!isSignedIn ? <a href="/signup" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Sign Up</a> : <a href="/farmer-profile" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Dashboard</a>}
+                            {!isSignedIn ? <a href="/signup" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Sign Up</a> : <a href="/farmer-dashboard" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Dashboard</a>}
                         </div>
                     </nav>
                 </header>

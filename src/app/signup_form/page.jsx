@@ -15,7 +15,6 @@ const font = Rammetto_One({
 const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
 
 const SignupForm = () => {
-    const [isSignedIn, setIsSignedIn] = useState(false);
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [farmArea, setFarmArea] = useState('');
@@ -25,7 +24,6 @@ const SignupForm = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
-                setIsSignedIn(true);
                 const userDocRef = doc(db, "users", user.uid);
                 const userDoc = await getDoc(userDocRef);
 

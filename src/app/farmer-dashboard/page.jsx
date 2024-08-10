@@ -14,7 +14,6 @@ import WeatherCard from '@/components/(farmer-dash)/weathercard';
 function Dash() {
     const [userName, setUserName] = useState('');
     const [userCity, setUserCity] = useState('');
-    const [loading, setLoading] = useState(true);
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
@@ -34,16 +33,12 @@ function Dash() {
                     }
                 } catch (error) {
                     console.error("Error fetching user data: ", error);
-                } finally {
-                    setLoading(false);
                 }
-            } else {
-                setLoading(false);
             }
         });
         return () => unsubscribe();
     }, []);
-    
+
     return (
         <div className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
             <Sidefarm />
@@ -51,7 +46,7 @@ function Dash() {
                 <div className="px-6 py-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
-                        <h1 className="text-3xl font-bold mb-10">Welcome back, {userName}!</h1>
+                            <h1 className="text-3xl font-bold mb-10">Welcome back, {userName}!</h1>
                             <div className="flex items-center justify-between">
                                 <div className="">
                                     <div className="flex items-stretch pt-4">
@@ -94,12 +89,6 @@ function Dash() {
                                             <div className="font-bold text-2xl leading-none">₹ 80.32/kg</div>
                                             <div className="mt-2">Latest Potato Price</div>
                                         </div>
-                                        <div className="col-span-2">
-                                            {/* <div className="p-4 bg-purple-100 rounded-xl text-gray-800">
-                                                <div className="font-bold text-xl leading-none">Your daily plan</div>
-                                                <div className="mt-2">5 of 8 completed</div>
-                                            </div> */}
-                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -124,10 +113,8 @@ function Dash() {
                                             </div>
                                             <a href=" " className="font-bold hover:text-yellow-800 hover:underline">Prices of grains are Potatoes to be falling by 5% in Gujarat</a>
                                             <div className="text-sm text-gray-600">
-
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <WeatherCard loc={userCity} />
