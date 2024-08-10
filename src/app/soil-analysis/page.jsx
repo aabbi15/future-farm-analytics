@@ -9,12 +9,22 @@ function Page() {
     const [phosphorous, setPhosphorous] = useState('');
     const [potassium, setPotassium] = useState('');
     const [ph, setPh] = useState('');
+<<<<<<< HEAD
+=======
+    const [temperature, setTemperature] = useState('')
+    const [humidity, setHumidity] = useState('')
+    const [rainfall, setRainfall] = useState('')
+>>>>>>> df92470f303ada750b3de0f331a130e595090357
     const [suggestedCrop, setSuggestedCrop] = useState(null);
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         try {
+<<<<<<< HEAD
             const response = await axios.post("http://127.0.0.1:5000/crop-predict", { nitrogen, phosphorous, potassium, temperature: 20, humidity: 82, ph, rainfall: 200 });
+=======
+            const response = await axios.post("http://127.0.0.1:5000/crop-predict", { nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall });
+>>>>>>> df92470f303ada750b3de0f331a130e595090357
             setSuggestedCrop(response.data.crop);
         } catch (error) {
             console.error("Error fetching crop prediction:", error);
@@ -36,6 +46,18 @@ function Page() {
             case 'ph':
                 setPh(value);
                 break;
+<<<<<<< HEAD
+=======
+            case 'temperature':
+                setTemperature(value)
+                break;
+            case 'humidity':
+                setHumidity(value)
+                break;
+            case 'rainfall':
+                setRainfall(value)
+                break;
+>>>>>>> df92470f303ada750b3de0f331a130e595090357
             default:
                 break;
         }
@@ -54,6 +76,7 @@ function Page() {
                                 <div className="col-span-2 p-4 rounded-lg border bg-slate-100 border-gray-800">
                                     <h1 className="text-2xl font-bold">Enter Soil Data</h1>
                                     <form onSubmit={handleFormSubmit} className="grid gap-4 mt-2">
+<<<<<<< HEAD
                                         {["Nitrogen", "phosphorous", "Potassium", "pH"].map((label) => (
                                             <div key={label} className="flex flex-col gap-2">
                                                 <label className="text-sm font-semibold">{label} (%)</label>
@@ -61,6 +84,15 @@ function Page() {
                                             </div>
                                         ))}
                                         <button type="submit" className="cursor-pointer text-xs transition-all bg-blue-500 text-white px-4 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" > Predict Crop </button>
+=======
+                                        {["Nitrogen", "Phosphorous", "Potassium", "Temperature", "Humidity", "pH", "Rainfall"].map((label) => (
+                                            <div key={label} className="flex flex-col gap-2">
+                                                <label className="text-sm font-semibold">{label} (%)</label>
+                                                <input type="number" name={label.toLowerCase()} value={label === "Nitrogen" ? nitrogen : label === "Phosphorous" ? phosphorous : label === "Potassium" ? potassium : label === "pH" ? ph : label === "Temperature" ? temperature : label === "Humidity" ? humidity : rainfall} onChange={handleChange} className="p-2 border rounded" min="0" />
+                                            </div>
+                                        ))}
+                                        <button type="submit" className="cursor-pointer text-xs transition-all bg-blue-500 text-white px-4 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >Predict Crop</button>
+>>>>>>> df92470f303ada750b3de0f331a130e595090357
                                     </form>
                                 </div>
                                 <div className="col-span-4 p-4 rounded-lg border bg-slate-100 border-gray-800">
