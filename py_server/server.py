@@ -15,25 +15,40 @@ crop_recommendation_model = pickle.load(open(crop_recommendation_model_path, 'rb
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
 def crop_prediction():
-    # Get data from the JSON request
-    data = request.get_json()
+    try:
+        # Get data from the JSON request
+        data = request.get_json()
 
-    N = data['nitrogen']
-    P = data['phosphorous']
-    K = data['pottasium']
-    temperature = data['temperature']
-    humidity = data['humidity']
-    ph = data['ph']
-    rainfall = data['rainfall']
+        # Check if all required fields are present
+        required_fields = ['nitrogen', 'phosphorous', 'pottasium', 'temperature', 'humidity', 'ph', 'rainfall']
+        if not all(field in data for field in required_fields):
+            return jsonify({'error': 'Missing fields in the request'}), 400
 
-    # Create an array for prediction
-    prediction_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
+        # Extract the data
+        N = data['nitrogen']
+        P = data['phosphorous']
+        K = data['pottasium']
+        temperature = data['temperature']
+        humidity = data['humidity']
+        ph = data['ph']
+        rainfall = data['rainfall']
+
+        # Debugging output
+        print(f"Received data: N={N}, P={P}, K={K}, Temperature={temperature}, Humidity={humidity}, pH={ph}, Rainfall={rainfall}")
+
+        # Create an array for prediction
+        prediction_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
+
+        # Perform the prediction
+        prediction = crop_recommendation_model.predict(prediction_data)
+        final_prediction = prediction[0]  # This should be a string like 'jute', 'rice', etc.
+
+        return jsonify({'crop': final_prediction})
     
-    # Perform the prediction
-    prediction = crop_recommendation_model.predict(prediction_data)
-    final_prediction = prediction[0]
-
-    return jsonify({'crop': final_prediction})
+    except Exception as e:
+        # Log the error
+        print(f"Error during prediction: {e}")
+        return jsonify({'error': str(e)}), 500
 
 # Handle time series prediction
 @app.route('/predict', methods=['POST'])
