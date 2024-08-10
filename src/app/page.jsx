@@ -42,7 +42,7 @@ export default function Home() {
               <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
                 <span className="sr-only">Open main menu</span>
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
               </button>
             </div>  */}
@@ -69,7 +69,7 @@ export default function Home() {
                 <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
                   <span className="sr-only">Close menu</span>
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
@@ -99,7 +99,7 @@ export default function Home() {
               <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 <a href="https://github.com/pranshu05/hackout" className="font-semibold">
                   <div className="flex grid-cols-3">
-                    Checkout our GitHub Repo. <span className="pl-2 pr-2 flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round" strokeWidth="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></g></svg></span> <span className="text-[#124b3d]" aria-hidden="true">&rarr;</span>
+                    Checkout our GitHub Repo. <span className="pl-2 pr-2 flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="#888888" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></g></svg></span> <span className="text-[#124b3d]" aria-hidden="true">&rarr;</span>
                   </div>
                 </a>
               </div>
@@ -192,7 +192,7 @@ export default function Home() {
               </a>
               <p className="text-xs pt-2 text-[#124b3d]">
                 Sign up to get started with Farm Future Analytics.{" "}
-                <a href="#" className="underline underline-offset-2" prefetch={false}>
+                <a href="#" className="underline underline-offset-2">
                   Terms &amp; Conditions
                 </a>
               </p>
@@ -224,13 +224,13 @@ export default function Home() {
         <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#f0f4d4]">
           <p className="text-xs text-[#124b3d]">&copy; 2024 Farm Future Analytics. All rights reserved.</p>
           <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Terms of Service
             </a>
-            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Privacy
             </a>
-            <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]" prefetch={false}>
+            <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
               Contact
             </a>
           </nav>

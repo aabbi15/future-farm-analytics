@@ -1,8 +1,7 @@
 "use client";
 
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase/firebase';
@@ -12,7 +11,7 @@ import DateDisplay from "@/components/(farmer-dash)/currdate";
 import ProfileCard from "@/components/(farmer-dash)/profile-card";
 import CropCard from "@/components/(farmer-dash)/cropcard";
 
-function Dash() {
+function FarmerProfile() {
     const [userCrops, setUserCrops] = useState([]);
     const router = useRouter();
 
@@ -26,6 +25,8 @@ function Dash() {
                 if (userDoc.exists()) {
                     const userCrops = userDoc.data().crops || [];
                     setUserCrops(userCrops);
+                } else {
+                    console.warn("User document does not exist.");
                 }
             }
         } catch (error) {
@@ -54,10 +55,14 @@ function Dash() {
                         <div className="bg-white rounded-3xl p-8 mb-5">
                             <ProfileCard />
                             <h1 className="text-4xl font-bold mb-10 text-center text-black">My Crops</h1>
-                            <div className="flex gap-2 items-start">
-                                {userCrops.map((crop, index) => (
-                                    <CropCard key={index} cropname={crop} />
-                                ))}
+                            <div className="flex flex-wrap gap-4 justify-center">
+                                {userCrops.length > 0 ? (
+                                    userCrops.map((crop, index) => (
+                                        <CropCard key={index} cropname={crop} />
+                                    ))
+                                ) : (
+                                    <p>No crops found.</p>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -67,4 +72,4 @@ function Dash() {
     );
 }
 
-export default Dash;
+export default FarmerProfile;

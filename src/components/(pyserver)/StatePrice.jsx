@@ -21,7 +21,7 @@ export default function StatePrice(){
                         const userState = userDoc.data().state || 'Bihar';  
                         setState(userState);
                         
-                        const response = await axios.post('http://localhost:5000/predict', { state: userState });
+                        const response = await axios.post('http://localhost:5000/predict', { state: userState, N: '30', P: '30', K: '30', ph: '7', rainfall: '200'});
                         setPredictions(response.data);
                     }
                 }
