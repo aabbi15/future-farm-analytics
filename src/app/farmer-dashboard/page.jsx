@@ -1,21 +1,63 @@
 "use client"
 
 import Image from 'next/image';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import Farmerhead from "@/components/(farmer-dash)/header";
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import DateDisplay from "@/components/(farmer-dash)/currdate";
+import Current from '@/components/(farmer-dash)/weathercard';
 
 
 function Dash() {
     const [welcome, Setwelcome] = useState("Good day, Kristin");
     const [name, Setname] = useState("Kristin");
-    const [location, Setlocation] = useState("Gandhinagar, GJ");
+    const [loc, Setloc] = useState("Gandhinagar");
+
+    const [data, setdata] = useState({});
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=538023bd3c43455084733202231905&q=${loc}&days=7&aqi=yes&alerts=yes`;
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
+
+    useEffect(() => {
+
+        console.log("i am in useeffect");
+
+
+        const fetchData = async () => {
+          try {
+            const response = await fetch(url);
+
+            console.log(response);
+            if (!response.ok) {
+              throw new Error();
+            }
+            const data = await response.json();
+            setdata(data);
+            // setError("");
+          } catch (error) {
+            console.log("ERROR",error);
+            // setError("City not found");
+            setdata({});
+          }
+        };
+    
+        // Only trigger the fetch when a search operation is intended
+        if(loc){
+            fetchData();
+
+            console.log(data);
+        }
+          
+        
+      }, []); 
+
+    
+    
+
+
 
     return (
         <body className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
@@ -32,7 +74,7 @@ function Dash() {
                                         <div className="text-gray-400 text-xs">
                                             <Image src="/location-sign.png" alt="avatar" width="21" height="21" />
                                         </div>
-                                        <div className="pl-2"> {location} </div>
+                                        <div className="pl-2"> {loc} </div>
                                         <div className="h-[20px] border-l mx-4"></div>
                                         <div className="-mt-2 -ml-1">
                                             <DateDisplay />
@@ -112,6 +154,8 @@ function Dash() {
                                         </div>
                                     </div>
                                 </div>
+
+                                <Current data={data}/>
                             </div>
                         </div>
                     </div>
