@@ -50,18 +50,24 @@ export default function Home() {
               </button>
             </div>  */}
 <<<<<<< HEAD
+<<<<<<< HEAD
             <div className="lg:flex lg:gap-x-12">
               <a href="#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
               <a href="#" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
               <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
               <a href="#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
 =======
+=======
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
             <div class="lg:flex lg:gap-x-12">
               <a href="#keyfeatures" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
               <a href="/analysis" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
               <a href="#joinus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
               <a href="#contactus" class="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
+<<<<<<< HEAD
 >>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+=======
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
             </div>
             <div className="lg:flex lg:flex-1 lg:justify-end">
               <a href="/farmer-profile" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Already have an account ?</a>
@@ -111,14 +117,19 @@ export default function Home() {
                 <div className="font-semibold">
                   <div className="flex grid-cols-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     Checkout our GitHub Repo. <span className="pl-2 pr-2 flex justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="#888888" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5c.08-1.25-.27-2.48-1-3.5c.28-1.15.28-2.35 0-3.5c0 0-1 0-3 1.5c-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5c-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></g></svg></span> <span className="text-[#124b3d]" aria-hidden="true">&rarr;</span>
 =======
                     Growing Tomorrow&apos;s Harvest Today !
 >>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+=======
+                    Growing Tomorrow&apos;s Harvest Today !
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
                   </div>
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight text-[#124b3d] sm:text-6xl">Unlock the Future of Farming with Farm Future Analytics</h1>
@@ -127,13 +138,18 @@ export default function Home() {
                 <a href="#joinus" className="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
                 <a href="#keyfeatures" className="text-sm font-semibold leading-6 text-[#124b3d]">Learn more <span aria-hidden="true">→</span></a>
 =======
+=======
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
             <div class="text-center">
               <h1 class="text-4xl font-bold tracking-tight text-[#124b3d] sm:text-7xl">Unlock the Future of Farming with Farm Future Analytics</h1>
               <p class="mt-6 text-lg leading-8 text-gray-600">Our cutting-edge analytics platform helps farmers and agribusinesses make informed decisions and maximize their yields.</p>
               <div class="mt-8 flex items-center justify-center gap-x-6">
                 <a href="#joinus" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
                 <a href="#keyfeatures" class="text-sm font-semibold leading-6 text-[#124b3d]">Learn more <span aria-hidden="true">→</span></a>
+<<<<<<< HEAD
 >>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+=======
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
               </div>
               <div className="hidden sm:mt-4 sm:flex sm:justify-center">
                   <a href="https://github.com/pranshu05/hackout" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">
@@ -219,10 +235,14 @@ export default function Home() {
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <a href="#" className="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 =======
               <a href="/signup" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
 >>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+=======
+              <a href="/signup" class="rounded-md bg-[#124b3d] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#12493ccd] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
                 Join Us
               </a>
               <p className="pt-2">

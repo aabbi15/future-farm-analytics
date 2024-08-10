@@ -10,6 +10,7 @@ import ProfileCard from "@/components/(farmer-dash)/profile-card";
 import CropCard from "@/components/(farmer-dash)/cropcard";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function FarmerProfile() {
     const [userCrops, setUserCrops] = useState([]);
 =======
@@ -20,6 +21,10 @@ function Dash() {
     const [location, Setlocation] = useState("Gandhinagar, GJ");
 
 >>>>>>> 99e5e769881324da5ee53a9cf9f0f7d8c47d3336
+=======
+function FarmerProfile() {
+    const [userCrops, setUserCrops] = useState([]);
+>>>>>>> fd0b63877d3caaeb00e37942d20e08efd45e96dc
     const router = useRouter();
 
     const fetchUserData = async () => {
