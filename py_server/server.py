@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model = pickle.load(open('py_server\RandomForest.pkl', 'rb'))
+crop_recommendation_model = pickle.load(open('RandomForest.pkl', 'rb'))
 
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
@@ -60,7 +60,7 @@ def predict_rice():
     results = model.fit()
     
     # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
+    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
     pred_mean = pred.predicted_mean.tolist()
     
     return jsonify(pred_mean)
@@ -78,7 +78,25 @@ def predict_wheat():
     results = model.fit()
     
     # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2023-07-01'), end=pd.to_datetime('2023-12-01'), dynamic=False)
+    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean.tolist()
+    
+    return jsonify(pred_mean)
+
+@app.route('/tomato-price-predict', methods=['POST'])
+def predict_tomato():
+    data = request.json
+    state = data.get('state', 'Bihar')
+    
+    # Load the dataset
+    df2 = pd.read_excel('tomatoall.xlsx', index_col='Date', parse_dates=True)
+    
+    # Build and fit the SARIMAX model
+    model = sm.tsa.statespace.SARIMAX(df2[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    results = model.fit()
+    
+    # Make predictions
+    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
     pred_mean = pred.predicted_mean.tolist()
     
     return jsonify(pred_mean)
