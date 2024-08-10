@@ -21,7 +21,7 @@ export default function Home() {
                         </div>
                         <div className="lg:flex lg:gap-x-12">
                             <a href="#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Features</a>
-                            <a href="#" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
+                            <a href="/analysis" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Analysis</a>
                             <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Join</a>
                             <a href="#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-gray-900">Contact</a>
                         </div>
