@@ -9,7 +9,6 @@ export default function ProfileCard() {
     const [userName, setUserName] = useState('');
     const [userCity, setUserCity] = useState('');
     const [email, setEmail] = useState('');
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -28,20 +27,12 @@ export default function ProfileCard() {
                     }
                 } catch (error) {
                     console.error("Error fetching user data: ", error);
-                } finally {
-                    setLoading(false);
                 }
-            } else {
-                setLoading(false);
             }
         });
 
         return () => unsubscribe();
     }, []);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div className="container mx-auto my-20">
