@@ -44,45 +44,45 @@ export default function StatePrice() {
                         setState(userState);
 
                         let data = fetch('/2014-2024.json')
-                        .then(res => res.json())
-                        .then(data => {
-                            if (state && data.Sheet1) {
-                                if (state == "Other") {
-                                    const filteredData = data.Sheet1.map(entry => ({
-                                        date: entry.Date,
-                                        value: entry["All India Average"]
-                                    }));
-                                    const last12Elements = filteredData.slice(-12);
-                                    setStateData(last12Elements);
-                                }
-                                else {
-                                    const filteredData = data.Sheet1.map(entry => ({
-                                        date: entry.Date,
-                                        value: entry[state]
-                                    }));
-                                    const last12Elements = filteredData.slice(-12);
-                                    setStateData(last12Elements);
-                                    (async()=>{
-                                        const response = await axios.post('http://127.0.0.1:5000/rice-price-predict', { state: userState });
-                                        const arr = [];
-                                        for (const key in response.data) {
-                                            if (response.data.hasOwnProperty(key)) {
-                                                arr.push({date: key, prediction: response.data[key]});
+                            .then(res => res.json())
+                            .then(data => {
+                                if (state && data.Sheet1) {
+                                    if (state == "Other") {
+                                        const filteredData = data.Sheet1.map(entry => ({
+                                            date: entry.Date,
+                                            value: entry["All India Average"]
+                                        }));
+                                        const last12Elements = filteredData.slice(-12);
+                                        setStateData(last12Elements);
+                                    }
+                                    else {
+                                        const filteredData = data.Sheet1.map(entry => ({
+                                            date: entry.Date,
+                                            value: entry[state]
+                                        }));
+                                        const last12Elements = filteredData.slice(-12);
+                                        setStateData(last12Elements);
+                                        (async () => {
+                                            const response = await axios.post('http://127.0.0.1:5000/rice-price-predict', { state: userState });
+                                            const arr = [];
+                                            for (const key in response.data) {
+                                                if (response.data.hasOwnProperty(key)) {
+                                                    arr.push({ date: key, prediction: response.data[key] });
+                                                }
                                             }
-                                        }
-                                        const finalarr = last12Elements.concat(arr);
-                                        setStateData(finalarr);
-                                    })()
+                                            const finalarr = last12Elements.concat(arr);
+                                            setStateData(finalarr);
+                                        })()
+                                    }
                                 }
-                            }
-                        })
+                            })
 
                         const updateDimensions = () => {
                             const b1w = document.getElementById('predictgraph').offsetWidth;
                             const b1h = document.getElementById('predictgraph').offsetHeight - 50;
                             setDimensions({ width: b1w, height: b1h });
                         };
-                
+
                         updateDimensions();
                         window.addEventListener('resize', updateDimensions);
                     } else {
@@ -111,20 +111,19 @@ export default function StatePrice() {
 
                 <section className='relative h-full w-full isolate px-6 pt-5 lg:px-8'>
                     <div className="flex h-full w-full items-center justify-center">
-                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-9 rounded-lg">
-                            <div className="col-span-2 row-span-2 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
-                                <div>
-                                    <p className='text-black text-lg text-center'>
-                                        {/* The Market Price for <span className='font-bold'>{data1.crop}</span> will be highest in
-                                        <span className='font-bold bg-[#FFCDD2]'>{data1.month}</span> and will be valued approximately at
-                                        <span className='font-bold bg-[#FFEB3B]'> {data1.price}</span> */}
-                                    </p>
-                                </div>
+                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-13 rounded-lg">
+                            <div className="col-span-2 row-span-3 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
+                                <p className='text-black text-base text-center p-1'>
+                                    <b>1. Strategic Selling:</b><br />
+                                    Predictive models help farmers identify the best times to sell crops for maximum profit. By storing produce and selling when prices peak, farmers can increase revenue significantly.
+                                </p>
                             </div>
-
-                            <div className="col-span-2 row-span-2 bentoimg2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md">
+                            <div className="col-span-2 row-span-3 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md flex items-center justify-center">
+                                <p className='text-black text-base text-center p-1'>
+                                    <b>2. Financial Planning and Investment:</b><br />
+                                    Accurate price forecasts enable better budgeting for seeds, fertilizers, and labor. This reduces cash flow risks and lowers overall costs.
+                                </p>
                             </div>
-
                             <div id="predictgraph" className="col-span-4 row-span-5 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
                                 <div>
                                     <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
@@ -134,21 +133,26 @@ export default function StatePrice() {
                                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                                         <CartesianGrid strokeDasharray="3 3" />
                                         <XAxis dataKey="date" interval={11}></XAxis>
-                                        <YAxis type="number" domain={['auto', 'auto']}/>
+                                        <YAxis type="number" domain={['auto', 'auto']} />
                                         <Tooltip />
                                         <Legend />
-                                        <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={3}/>
-                                        <Line type="monotone" dataKey="prediction" stroke="#82ca9d" strokeWidth={3}/>
+                                        <Line type="monotone" dataKey="value" stroke="#8884d8" strokeWidth={3} />
+                                        <Line type="monotone" dataKey="prediction" stroke="#82ca9d" strokeWidth={3} />
                                     </LineChart>
                                 </div>
                             </div>
 
-                            <div className="col-span-2 row-span-2 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
-                                <p className={`text-md font-bold tracking-tight text-[#124b3d] ${font.className}`}>Growing Tomorrow&apos;s Harvest Today !</p>
+                            <div className="col-span-2 row-span-3 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
+                                <p className='text-black text-base text-center p-1'>
+                                    <b>3. Negotiating Power and Entering Contracts:</b><br />
+                                    Farmers can use price forecasts to negotiate better deals and secure favorable contracts, reducing income volatility.
+                                </p>
                             </div>
-
-                            <div className="col-span-2 row-span-2 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
-                                <p className={`text-xl font-bold tracking-tight text-[#124b3d] ${font.className}`}>Dataset :</p> <a className='text-xl hover:underline underline-offset-4' href='https://consumeraffairs.nic.in/'>https://consumeraffairs.nic.in/</a>
+                            <div className="col-span-2 row-span-3 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
+                                <p className='text-black text-base text-center p-1'>
+                                    <b>4. Risk Mitigation through Crop Diversification:</b><br />
+                                    Price predictions guide farmers in diversifying crops, reducing reliance on a single income source and decreasing income variability.
+                                </p>
                             </div>
 
                         </div>

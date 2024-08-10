@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
-import Mygraph from '@/components/(farmer-dash)/grapher';
 import StatePrice from '@/components/(pyserver)/StatePrice';
 
 
