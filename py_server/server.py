@@ -19,14 +19,14 @@ def crop_prediction():
         data = request.get_json()
 
         # Check if all required fields are present
-        required_fields = ['nitrogen', 'phosphorous', 'pottasium', 'temperature', 'humidity', 'ph', 'rainfall']
+        required_fields = ['nitrogen', 'phosphorous', 'potassium', 'temperature', 'humidity', 'ph', 'rainfall']
         if not all(field in data for field in required_fields):
             return jsonify({'error': 'Missing fields in the request'}), 400
 
         # Extract the data
         N = data['nitrogen']
         P = data['phosphorous']
-        K = data['pottasium']
+        K = data['potassium']
         temperature = data['temperature']
         humidity = data['humidity']
         ph = data['ph']

@@ -90,7 +90,7 @@ const Mygraph = () => {
                         <div className="col-span-2 row-span-3 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
                             <p className='text-black text-base text-center p-1'>
                                 <b>4. Risk Mitigation through Crop Diversification:</b><br />
-                                Price predictions guide farmers in diversifying crops, reducing reliance on a single income source and decreasing income variability.
+                                Price predictions guide farmers in diversifying crops, reducing reliance on a single income source and decreasing income variability.
                             </p>
                         </div>
                     </div>
