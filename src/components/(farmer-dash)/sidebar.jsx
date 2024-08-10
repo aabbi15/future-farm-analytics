@@ -36,7 +36,7 @@ export default function Sidefarm() {
                                 </a>
                             </li>
                             <li>
-                                <a href="/crop-analysis" className={`flex bg-white    rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/crop-analysis') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
+                                <a href="/crop-analysis" className={`flex bg-white rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/crop-analysis') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
                                     <Image src="/magnify.png" alt="" width={20} height={20} className="mr-4" />My Price Analysis
                                 </a>
                             </li>
@@ -48,12 +48,12 @@ export default function Sidefarm() {
                             </li>
 
                             <li>
-                                <a href="/alerts" className={`flex bg-white    rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/alerts') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
+                                <a href="/alerts" className={`flex bg-white rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/alerts') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
                                     <Image src="/notify.png" alt="" width={20} height={20} className="mr-4" />All Alerts
                                 </a>
                             </li>
                             <li>
-                                <a href="/farmer-news" className={`flex bg-white    rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/farmer-news') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
+                                <a href="/farmer-news" className={`flex bg-white rounded-xl font-bold text-sm text-gray-900 py-3 px-4 ${isActive('/farmer-news') ? 'bg-yellow-200' : 'hover:bg-yellow-50'}`}>
                                     <Image src="/news.png" alt="" width={20} height={20} className="mr-4" />Farm Future News
                                 </a>
                             </li>

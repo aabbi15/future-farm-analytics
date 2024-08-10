@@ -7,7 +7,6 @@ import statsmodels.api as sm
 from flask_cors import CORS
 from fertilizer_py import fertilizer_dic
 
-
 app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
@@ -49,17 +48,22 @@ def crop_prediction():
         print(f"Error during prediction: {e}")
         return jsonify({'error': str(e)}), 500
 
-# Handle time series prediction for rice
-@app.route('/rice-price-predict', methods=['POST'])
-def predict_rice():
+# Handle time series prediction for any crop
+@app.route('/crop-price-predict', methods=['POST'])
+def predict_crop_price():
     data = request.json
     state = data.get('state', 'Bihar')
+    crop = data.get('crop', 'rice')
     
-    # Load the dataset
-    df1 = pd.read_excel('Final DataSet.xlsx', index_col='Date', parse_dates=True)
+    # Construct the filename based on the crop name
+    filename = f'{crop}.xlsx'
+    try:
+        df = pd.read_excel(filename, index_col='Date', parse_dates=True)
+    except FileNotFoundError:
+        return jsonify({'error': f'File {filename} not found'}), 404
     
     # Build and fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df1[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
+    model = sm.tsa.statespace.SARIMAX(df[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
     results = model.fit()
     
     # Make predictions
@@ -70,43 +74,6 @@ def predict_rice():
     pred_dict = {date.strftime("%d/%m/%Y"): price for date, price in pred_mean.items()}
     
     return jsonify(pred_dict)
-
-# Handle time series prediction for wheat
-@app.route('/wheat-price-predict', methods=['POST'])
-def predict_wheat():
-    data = request.json
-    state = data.get('state', 'Bihar')
-    
-    # Load the dataset
-    df2 = pd.read_excel('wheatall.xlsx', index_col='Date', parse_dates=True)
-    
-    # Build and fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df2[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
-    results = model.fit()
-    
-    # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean.tolist()
-    
-    return jsonify(pred_mean)
-
-@app.route('/tomato-price-predict', methods=['POST'])
-def predict_tomato():
-    data = request.json
-    state = data.get('state', 'Bihar')
-    
-    # Load the dataset
-    df2 = pd.read_excel('tomatoall.xlsx', index_col='Date', parse_dates=True)
-    
-    # Build and fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df2[state], order=(0, 1, 0), seasonal_order=(0,1,1,12))
-    results = model.fit()
-    
-    # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean.tolist()
-    
-    return jsonify(pred_mean)
 
 @app.route('/fertilizer-predict', methods=['POST'])
 def fert_recommend():
@@ -149,6 +116,42 @@ def fert_recommend():
     response = Markup(str(fertilizer_dic[key]))
 
     return render_template('fertilizer-result.html', recommendation=response)
+
+@app.route('/max-price-notification', methods=['POST'])
+def predict_max_rice():
+    data = request.json
+    state = data.get('state', 'Bihar')
+    crop = data.get('crop', 'rice')
+    
+    # Construct the filename based on the crop name
+    filename = f'{crop}.xlsx'
+    try:
+        df = pd.read_excel(filename, index_col='Date', parse_dates=True)
+    except FileNotFoundError:
+        return jsonify({'error': f'File {filename} not found'}), 404
+    
+    # Build and fit the SARIMAX model
+    model = sm.tsa.statespace.SARIMAX(df[state], order=(0, 1, 0), seasonal_order=(0, 1, 1, 12))
+    results = model.fit()
+    
+    # Make predictions
+    pred = results.get_prediction(start=pd.to_datetime('2024-08-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean
+
+    # Convert predictions to a DataFrame
+    pred_df = pd.DataFrame(pred_mean, columns=['Price'])
+    pred_df.index.name = 'Date'
+    
+    # Get the maximum price
+    max_price_row = pred_df.loc[pred_df['Price'].idxmax()]
+    
+    # Create a dictionary with the date and price of the maximum price
+    pred_dict = {
+        'Date': max_price_row.name.strftime("%d/%m/%Y"),
+        'Price': max_price_row['Price']
+    }
+    
+    return jsonify(pred_dict)
 
 if __name__ == '__main__':
     app.run(debug=True)

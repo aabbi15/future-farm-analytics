@@ -26,7 +26,7 @@ const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Kar
 
 
 export default function StatePrice() {
-    const [predictions, setPredictions] = useState([]);
+    const [cropToPredict, setCropToPredict] = useState('rice');
     const [state, setState] = useState('');
     const [loading, setLoading] = useState(true);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -42,28 +42,39 @@ export default function StatePrice() {
                     if (userDoc.exists()) {
                         const userState = userDoc.data().state || 'Bihar';
                         setState(userState);
-
-                        let data = fetch('/2014-2024.json')
+                        let data = fetch(`/${cropToPredict}.json`)
                             .then(res => res.json())
                             .then(data => {
-                                if (state && data.Sheet1) {
+                                if (state && data) {
                                     if (state == "Other") {
-                                        const filteredData = data.Sheet1.map(entry => ({
+                                        const filteredData = data.map(entry => ({
                                             date: entry.Date,
                                             value: entry["All India Average"]
                                         }));
                                         const last12Elements = filteredData.slice(-12);
                                         setStateData(last12Elements);
+                                        (async () => {
+                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop:cropToPredict });
+                                            const arr = [];
+                                            for (const key in response.data) {
+                                                if (response.data.hasOwnProperty(key)) {
+                                                    arr.push({ date: key, prediction: response.data[key] });
+                                                }
+                                            }
+                                            const finalarr = last12Elements.concat(arr);
+                                            setStateData(finalarr);
+                                        })()
                                     }
                                     else {
-                                        const filteredData = data.Sheet1.map(entry => ({
+                                        const filteredData = data.map(entry => ({
                                             date: entry.Date,
                                             value: entry[state]
                                         }));
+                                        console.log(filteredData);
                                         const last12Elements = filteredData.slice(-12);
                                         setStateData(last12Elements);
                                         (async () => {
-                                            const response = await axios.post('http://127.0.0.1:5000/rice-price-predict', { state: userState });
+                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop:cropToPredict });
                                             const arr = [];
                                             for (const key in response.data) {
                                                 if (response.data.hasOwnProperty(key)) {
@@ -98,7 +109,7 @@ export default function StatePrice() {
         });
 
         return () => unsubscribe();
-    }, [state]);
+    }, [state, cropToPredict]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -107,27 +118,33 @@ export default function StatePrice() {
     return (
         <div>
             <h1 className={`text-2xl font-bold tracking-tight text-[#124b3d] ${font.className}`}>{state} Crop Price Forecast</h1>
-            <div className='flex h-[100dvh] justify-center items-center'>
 
-                <section className='relative h-full w-full isolate px-6 pt-5 lg:px-8'>
+            <section className='flex justify-center items-center px-6 gap-10'>
+                <button onClick={()=>{setCropToPredict('wheat')}} className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Wheat</button>
+                <button onClick={()=>{setCropToPredict('rice')}} className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Rice</button>
+                <button onClick={()=>{setCropToPredict('tomato')}} className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Tomato</button>
+            </section>
+
+            <div className='flex h-[100dvh] justify-center items-center'>
+                <section className='relative h-full w-full isolate px-6 pt-2 lg:px-8'>
                     <div className="flex h-full w-full items-center justify-center">
-                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-13 rounded-lg">
-                            <div className="col-span-2 row-span-3 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
+                        <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-8 rounded-lg">
+                            <div className="col-span-2 row-span-2 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>1. Strategic Selling:</b><br />
                                     Predictive models help farmers identify the best times to sell crops for maximum profit. By storing produce and selling when prices peak, farmers can increase revenue significantly.
                                 </p>
                             </div>
-                            <div className="col-span-2 row-span-3 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md flex justify-center items-center p-4">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>2. Financial Planning and Investment:</b><br />
                                     Accurate price forecasts enable better budgeting for seeds, fertilizers, and labor. This reduces cash flow risks and lowers overall costs.
                                 </p>
                             </div>
-                            <div id="predictgraph" className="col-span-4 row-span-5 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
-                                <div>
+                            <div id="predictgraph" className="col-span-4 row-span-4 bg-lime-200 rounded-lg shadow-md">
+                                <div className='w-full h-full'>
                                     <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
-                                        <h1 className={`text-2xl ${font.className}`}>Rice Price 2020-2024</h1>
+                                        <h1 className={`text-2xl ${font.className}`}>{cropToPredict.toUpperCase()} Price 2020-2024</h1>
                                     </div>
                                     <LineChart width={dimensions.width} height={dimensions.height} data={stateData}
                                         margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -142,13 +159,13 @@ export default function StatePrice() {
                                 </div>
                             </div>
 
-                            <div className="col-span-2 row-span-3 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-red-200 rounded-lg shadow-md flex items-center justify-center">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>3. Negotiating Power and Entering Contracts:</b><br />
                                     Farmers can use price forecasts to negotiate better deals and secure favorable contracts, reducing income volatility.
                                 </p>
                             </div>
-                            <div className="col-span-2 row-span-3 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
+                            <div className="col-span-2 row-span-2 bg-gray-200 rounded-lg shadow-md flex items-center justify-center">
                                 <p className='text-black text-base text-center p-1'>
                                     <b>4. Risk Mitigation through Crop Diversification:</b><br />
                                     Price predictions guide farmers in diversifying crops, reducing reliance on a single income source and decreasing income variability.
