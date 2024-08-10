@@ -20,48 +20,30 @@ export default function Sidefarm() {
                     <div className="p-4">
                         <ul className="space-y-1">
                             <li>
-<<<<<<< HEAD
-                                <a href="#" className="flex items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4">
-=======
-                            <a href=" " className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
->>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
+                                <a href=" " className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
                                     <Image src="/home.png" alt="" width={20} height={20} className="mr-4" />Home
                                 </a>
                             </li>
                             <li>
-<<<<<<< HEAD
-                                <a href="#" className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
-                                    <Image src="/magnify.png" alt="" width={20} height={20} className="mr-4" />Detailed Analysis
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
-=======
                                 <a href=" " className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
                                     <Image src="/magnify.png" alt="" width={20} height={20} className="mr-4" />Personalized Analysis
                                 </a>
                             </li>
                             <li>
                                 <a href=" " className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
->>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
                                     <Image src="/notify.png" alt="" width={20} height={20} className="mr-4" />All Alerts
                                 </a>
                             </li>
                             <li>
-<<<<<<< HEAD
-                                <a href="#" className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
-                                    <Image src="/news.png" alt="" width={20} height={20} className="mr-4" />News
-=======
                                 <a href=" " className="flex bg-white hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
                                     <Image src="/news.png" alt="" width={20} height={20} className="mr-4" />Farm Future News
                                 </a>
                             </li>
 
                             <li>
-                            <a href=" " className="flex items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4">
-                                
+                                <a href=" " className="flex items-center bg-yellow-200 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4">
+
                                     <Image src="/farmer.png" alt="" width={20} height={20} className="mr-4" />My Profile
->>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
                                 </a>
                             </li>
                         </ul>

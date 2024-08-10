@@ -1,81 +1,64 @@
 "use client"
 
 import Image from 'next/image';
-<<<<<<< HEAD
-=======
 import { useState, useEffect } from "react";
->>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-import Farmerhead from "@/components/(farmer-dash)/header";
+import { auth, db } from '@/firebase/firebase';
+import { doc, getDoc } from "firebase/firestore";
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import DateDisplay from "@/components/(farmer-dash)/currdate";
-import Current from '@/components/(farmer-dash)/weathercard';
-
-import axios from 'axios';
 import WeatherCard from '@/components/(farmer-dash)/weathercard';
 
 
 function Dash() {
-<<<<<<< HEAD
-=======
-    const [welcome, Setwelcome] = useState("Welcome back, Abhinav!");
-    const [name, Setname] = useState("Kristin");
-    const [location, Setlocation] = useState("Gandhinagar");
+    const [userName, setUserName] = useState('');
+    const [userCity, setUserCity] = useState('');
+    const [loading, setLoading] = useState(true);
 
-   
-    // const router = useRouter();
-    // onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
+    const router = useRouter();
+    onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
 
-
-    const [data, setData] = useState(null); // State to store fetched data
-    const [error, setError] = useState(null); // State to store any errors
-    const [loading, setLoading] = useState(true); // State to handle loading
-  
-    const url = "https://api.weatherapi.com/v1/forecast.json?key=538023bd3c43455084733202231905&q=gandhi&days=7&aqi=yes&alerts=yes";
-  
     useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                try {
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
 
-        console.log("hello");
-        // const fetchData = async () => {
-        //   try {
-        //     const response = await axios.get(url);
-        //     setData(response.data); // Update data state with fetched data
-        //     setLoading(false); // Update loading state
-        //   } catch (error) {
-        //     setError(error.message); // Update error state
-        //     setLoading(false); // Update loading state
-        //   }
-        // };
+                    if (userDoc.exists()) {
+                        const userName = user.displayName || 'Kristin';
+                        const userCity = userDoc.data().city || 'Gandhinagar';
+                        setUserName(userName);
+                        setUserCity(userCity);
+                    }
+                } catch (error) {
+                    console.error("Error fetching user data: ", error);
+                } finally {
+                    setLoading(false);
+                }
+            } else {
+                setLoading(false);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
     
-        // fetchData(); // Call the fetchData function
-
-        // console.log(data);
-      },[]); 
-
-   
-
-    
-    
-
->>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
-
-
     return (
         <div className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
-            {/* <Farmerhead section = "Home"/>S */}
             <Sidefarm />
             <div className="ml-60 pt-10 max-h-screen overflow-auto">
                 <div className="px-6 py-8">
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
+                        <h1 className="text-3xl font-bold mb-10">Welcome back, {userName}!</h1>
                             <div className="flex items-center justify-between">
                                 <div className="">
                                     <div className="flex items-stretch pt-4">
                                         <div className="text-gray-400 text-xs">
                                             <Image src="/location-sign.png" alt="avatar" width="21" height="21" />
                                         </div>
-                                        <div className="pl-2"> {location} </div>
+                                        <div className="pl-2"> {userCity} </div>
                                         <div className="h-[20px] border-l mx-4"></div>
                                         <div className="-mt-2 -ml-1">
                                             <DateDisplay />
@@ -141,14 +124,13 @@ function Dash() {
                                             </div>
                                             <a href=" " className="font-bold hover:text-yellow-800 hover:underline">Prices of grains are Potatoes to be falling by 5% in Gujarat</a>
                                             <div className="text-sm text-gray-600">
-                                                
+
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-
-                                <WeatherCard loc={location} /> 
+                                <WeatherCard loc={location} />
                             </div>
                         </div>
                     </div>

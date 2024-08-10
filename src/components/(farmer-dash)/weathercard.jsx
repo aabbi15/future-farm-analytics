@@ -8,7 +8,7 @@ function WeatherCard({loc}) {
   loc = "delhi";
   useEffect(() => {
 
-    // console.log("hello");
+    console.log("hello");
     const fetchData = async () => {
       const url = `https://api.weatherapi.com/v1/forecast.json?key=538023bd3c43455084733202231905&q=${loc}&days=7&aqi=yes&alerts=yes`; // Replace with your actual URL
       try {
@@ -17,6 +17,7 @@ function WeatherCard({loc}) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
+        console.log(data.current);
         setWeatherData(data);
       } catch (error) {
         console.error("There was a problem fetching weather data:", error);
@@ -24,8 +25,6 @@ function WeatherCard({loc}) {
     };
 
     fetchData();
-
-    console.log(data);
   }, []); // The empty array ensures this runs only once when the component mounts
 
   return (
