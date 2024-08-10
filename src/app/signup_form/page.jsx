@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { auth, db } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import Select from 'react-select';
 import { Rammetto_One } from "next/font/google";
 
 const font = Rammetto_One({
@@ -14,11 +15,36 @@ const font = Rammetto_One({
 
 const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
 
+const cropsOptions = [
+    { value: 'rice', label: 'Rice' },
+    { value: 'maize', label: 'Maize' },
+    { value: 'chickpea', label: 'Chickpea' },
+    { value: 'kidneybeans', label: 'Kidney Beans' },
+    { value: 'pigeonpeas', label: 'Pigeon Peas' },
+    { value: 'mothbeans', label: 'Moth Beans' },
+    { value: 'mungbean', label: 'Mung Bean' },
+    { value: 'blackgram', label: 'Black Gram' },
+    { value: 'lentil', label: 'Lentil' },
+    { value: 'pomegranate', label: 'Pomegranate' },
+    { value: 'banana', label: 'Banana' },
+    { value: 'mango', label: 'Mango' },
+    { value: 'grapes', label: 'Grapes' },
+    { value: 'watermelon', label: 'Watermelon' },
+    { value: 'muskmelon', label: 'Muskmelon' },
+    { value: 'apple', label: 'Apple' },
+    { value: 'orange', label: 'Orange' },
+    { value: 'papaya', label: 'Papaya' },
+    { value: 'coconut', label: 'Coconut' },
+    { value: 'cotton', label: 'Cotton' },
+    { value: 'jute', label: 'Jute' },
+    { value: 'coffee', label: 'Coffee' },
+];
+
 const SignupForm = () => {
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
     const [farmArea, setFarmArea] = useState('');
-    const [crops, setCrops] = useState('');
+    const [selectedCrops, setSelectedCrops] = useState([]);
     const router = useRouter();
 
     useEffect(() => {
@@ -45,8 +71,10 @@ const SignupForm = () => {
             const user = auth.currentUser;
             if (user) {
                 const userDocRef = doc(db, "users", user.uid);
+                const cropValues = selectedCrops.map(crop => crop.value);
+
                 await setDoc(userDocRef, {
-                    city, state, farmArea, crops: crops.split(',').map(crop => crop.trim())
+                    city, state, farmArea, crops: cropValues
                 }, { merge: true });
                 router.push('/');
             }
@@ -76,7 +104,7 @@ const SignupForm = () => {
                         ))}
                     </select>
                     <input type="text" placeholder="Farm Area (e.g., 10 acres)" value={farmArea} onChange={(e) => setFarmArea(e.target.value)} className="p-2 rounded-lg bg-transparent border border-[#124b3d]" required />
-                    <input type="text" placeholder="Crops (e.g., wheat, rice, corn)" value={crops} onChange={(e) => setCrops(e.target.value)} className="p-2 rounded-lg bg-transparent border border-[#124b3d]" required />
+                    <Select isMulti options={cropsOptions} value={selectedCrops} onChange={setSelectedCrops} className="mb-2" placeholder="Select Crops" required />
                     <button type="submit" className="w-fit mx-auto rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Submit</button>
                 </form>
             </div>
