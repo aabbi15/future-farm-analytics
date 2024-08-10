@@ -1,7 +1,7 @@
 {
     "Sheet1":[
      {
-      "Date": "01\/01\/2014",
+      "Date": "2014",
       "Bihar": 2627.42,
       "Delhi": 2310,
       "Gujarat": 1968.29,
@@ -229,7 +229,7 @@
       "All India Average": 2499
      },
      {
-      "Date": "01\/01\/2015",
+      "Date": "2015",
       "Bihar": 2166.67,
       "Delhi": 2370,
       "Gujarat": 1986.84,
@@ -457,7 +457,7 @@
       "All India Average": 2458.22
      },
      {
-      "Date": "01\/01\/2016",
+      "Date": "2016",
       "Bihar": 2074.6,
       "Delhi": 2215,
       "Gujarat": 2225,
@@ -685,7 +685,7 @@
       "All India Average": 2528.26
      },
      {
-      "Date": "01\/01\/2017",
+      "Date": "2017",
       "Bihar": 2279.71,
       "Delhi": 2421.67,
       "Gujarat": 2150,
@@ -913,7 +913,7 @@
       "All India Average": 2658.67
      },
      {
-      "Date": "01\/01\/2018",
+      "Date": "2018",
       "Bihar": 2672.86,
       "Delhi": 2649,
       "Gujarat": 2145,
@@ -1141,7 +1141,7 @@
       "All India Average": 2691.28
      },
      {
-      "Date": "01\/01\/2019",
+      "Date": "2019",
       "Bihar": 2801.36,
       "Delhi": 2698.33,
       "Gujarat": 2070,
@@ -1369,7 +1369,7 @@
       "All India Average": 3007.81
      },
      {
-      "Date": "01\/01\/2020",
+      "Date": "2020",
       "Bihar": 2799.27,
       "Delhi": 2848.33,
       "Gujarat": 2319.57,
@@ -1597,7 +1597,7 @@
       "All India Average": 3071.13
      },
      {
-      "Date": "01\/01\/2021",
+      "Date": "2021",
       "Bihar": 2631.3,
       "Delhi": 2644.64,
       "Gujarat": 2849.84,
@@ -1825,7 +1825,7 @@
       "All India Average": 3054.55
      },
      {
-      "Date": "01\/01\/2022",
+      "Date": "2022",
       "Bihar": 2951.8,
       "Delhi": 2320.97,
       "Gujarat": 2805.59,
@@ -2053,7 +2053,7 @@
       "All India Average": 3317.33
      },
      {
-      "Date": "01\/01\/2023",
+      "Date": "2023",
       "Bihar": 3220.99,
       "Delhi": 2935.48,
       "Gujarat": 2819.91,
@@ -2281,7 +2281,7 @@
       "All India Average": 3815.78
      },
      {
-      "Date": "01\/01\/2024",
+      "Date": "2024",
       "Bihar": 3335.27,
       "Delhi": 2737.1,
       "Gujarat": 3284.67,
