@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model = pickle.load(open('py_server\RandomForest.pkl', 'rb'))
+crop_recommendation_model = pickle.load(open('RandomForest.pkl', 'rb'))
 
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
