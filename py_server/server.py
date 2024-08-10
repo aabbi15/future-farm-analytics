@@ -49,7 +49,7 @@ def crop_prediction():
         print(f"Error during prediction: {e}")
         return jsonify({'error': str(e)}), 500
 
-# Handle time series prediction
+# Handle time series prediction for rice
 @app.route('/rice-price-predict', methods=['POST'])
 def predict_rice():
     data = request.json
@@ -63,11 +63,15 @@ def predict_rice():
     results = model.fit()
     
     # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2024-07-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean.tolist()
-    
-    return jsonify(pred_mean)
+    pred = results.get_prediction(start=pd.to_datetime('2024-08-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
+    pred_mean = pred.predicted_mean
 
+    # Create a dictionary with date:price pairs
+    pred_dict = {date.strftime("%d/%m/%Y"): price for date, price in pred_mean.items()}
+    
+    return jsonify(pred_dict)
+
+# Handle time series prediction for wheat
 @app.route('/wheat-price-predict', methods=['POST'])
 def predict_wheat():
     data = request.json

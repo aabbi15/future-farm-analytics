@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import Mygraph from '@/components/(farmer-dash)/grapher';
+import StatePrice from '@/components/(pyserver)/StatePrice';
 
 
 function Dash() {
@@ -21,7 +22,7 @@ function Dash() {
                     </div>
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
-                            <Mygraph />
+                            <StatePrice />
                         </div>
                     </div>
                 </div>

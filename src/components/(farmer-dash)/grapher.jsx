@@ -9,6 +9,8 @@ const font = Poppins({
     subsets: ['latin'],
 })
 
+const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
+
 const Mygraph = () => {
     const [state, setState] = useState('Delhi');
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -37,6 +39,7 @@ const Mygraph = () => {
                             date: entry.Date,
                             value: entry[state]
                         }));
+                        // console.log(filteredData);
                         setStateData(filteredData);
                     }
                 }
@@ -58,6 +61,7 @@ const Mygraph = () => {
         <div className='flex h-[100dvh] justify-center items-center'>
             <section className='relative h-full w-full isolate px-6 pt-5 lg:px-8'>
                 <div className="flex h-full w-full items-center justify-center">
+<<<<<<< HEAD
                     <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-11 rounded-lg">
                         <div className="col-span-2 row-span-3 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
                             <p className='text-black text-base text-center p-1'>
@@ -71,10 +75,28 @@ const Mygraph = () => {
                                 Accurate price forecasts enable better budgeting for seeds, fertilizers, and labor. This reduces cash flow risks and lowers overall costs.
                             </p>
                         </div>
+=======
+                    <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-9 rounded-lg">
+                        <div className="col-span-2 row-span-2 bg-[#b1d4c7] rounded-lg shadow-md flex justify-center items-center p-4">
+                            <div>
+                                <p className='text-black text-lg text-center'>
+                                    The Market Price for <span className='font-bold'>{data1.crop}</span> will be highest in
+                                    The Market Price for <span className='font-bold'>{data1.crop}</span> will be highest in
+                                    <span className='font-bold bg-[#FFCDD2]'>{data1.month}</span> and will be valued approximately at
+                                    <span className='font-bold bg-[#FFEB3B]'> {data1.price}</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="col-span-2 row-span-2 bentoimg2 bg-no-repeat bg-cover bg-yellow-200 rounded-lg shadow-md">
+                        </div>
+
+>>>>>>> 0c513ef84c9a82fb079d970330fe02b9e2e679ad
                         <div id="bento-1" className="col-span-4 row-span-5 bg-lime-200 rounded-lg shadow-md flex items-center justify-center">
                             <div>
                                 <div className={`flex pb-2 pr-2 pl-2 hover:border-[0px] focus:border-[0px] active:border-[0px] font justify-between items-center${font.className}`}>
                                     <h1 className={`text-2xl ${font.className}`}>Rice Price 2020-2024</h1>
+
                                 </div>
                                 <LineChart width={dimensions.width} height={dimensions.height} data={stateData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}> <CartesianGrid strokeDasharray="3 3" /> <XAxis dataKey="date" interval={11}></XAxis> <YAxis /> <Tooltip />
                                     <Line type="monotone" dataKey="value" stroke="#8884d8" dot={<></>} />
