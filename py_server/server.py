@@ -9,8 +9,7 @@ app = Flask(__name__)
 CORS(app)  # Allows all origins by default
 
 # Load the crop recommendation model
-crop_recommendation_model_path = 'RandomForest.pkl'
-crop_recommendation_model = pickle.load(open(crop_recommendation_model_path, 'rb'))
+crop_recommendation_model = pickle.load(open('py_server\RandomForest.pkl', 'rb'))
 
 # Handle crop prediction
 @app.route('/crop-predict', methods=['POST'])
@@ -49,7 +48,7 @@ def crop_prediction():
 
 # Handle time series prediction
 @app.route('/rice-price-predict', methods=['POST'])
-def predict():
+def predict_rice():
     data = request.json
     state = data.get('state', 'Bihar')
     
@@ -67,7 +66,7 @@ def predict():
     return jsonify(pred_mean)
 
 @app.route('/wheat-price-predict', methods=['POST'])
-def predict():
+def predict_wheat():
     data = request.json
     state = data.get('state', 'Bihar')
     
