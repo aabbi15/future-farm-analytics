@@ -1,0 +1,4 @@
+#124b3d for headings dark green
+#b1d4c7 as accent color mid green
+#f0f4d4 for background light yellow green
+black for plain text
