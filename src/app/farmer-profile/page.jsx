@@ -52,6 +52,7 @@ function FarmerProfile() {
                     <div className="max-w-4xl mx-auto">
                         <div className="bg-white rounded-3xl p-8 mb-5">
                             <ProfileCard />
+<<<<<<< HEAD
                             <h1 className="text-4xl font-bold mb-10 text-center text-black">My Crops</h1>
                             <div className="flex flex-wrap gap-4 justify-center">
                                 {userCrops.length > 0 ? (
@@ -61,6 +62,13 @@ function FarmerProfile() {
                                 ) : (
                                     <p>No crops found.</p>
                                 )}
+=======
+                            <h1 class="text-4xl font-bold mb-10 text-center text-black">My Crops</h1>
+                            <div className="flex gap-2 items-start">
+                                <CropCard cropname="Wheat" />
+                                <CropCard cropname="Potato" />
+                                <CropCard cropname="Rice" />
+>>>>>>> 658bf6120b3a01b82b6b8eb5c5924024356423ef
                             </div>
                         </div>
                     </div>
