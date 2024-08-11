@@ -14,6 +14,7 @@ import WeatherCard from '@/components/(farmer-dash)/weathercard';
 function Dash() {
     const [userName, setUserName] = useState('');
     const [userCity, setUserCity] = useState('');
+    const [userState, setUserState] = useState('');
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
@@ -28,8 +29,10 @@ function Dash() {
                     if (userDoc.exists()) {
                         const userName = user.displayName || 'Kristin';
                         const userCity = userDoc.data().city || 'Gandhinagar';
+                        const userState = userDoc.data().state || 'Bihar';
                         setUserName(userName);
                         setUserCity(userCity);
+                        setUserState(userState);
                     }
                 } catch (error) {
                     console.error("Error fetching user data: ", error);
@@ -53,7 +56,7 @@ function Dash() {
                                         <div className="text-gray-400 text-xs">
                                             <Image src="/location-sign.png" alt="avatar" width="21" height="21" />
                                         </div>
-                                        <div className="pl-2"> {userCity} </div>
+                                        <div className="pl-2"> {userState} </div>
                                         <div className="h-[20px] border-l mx-4"></div>
                                         <div className="-mt-2 -ml-1">
                                             <DateDisplay />
