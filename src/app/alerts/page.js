@@ -12,34 +12,34 @@ function Alerts() {
 
     const alerts = [
         {
-            author: 'Number 10',
-            title: 'Prices of wheat are subject to increase 20% in the next quarter',
+            author: 'By Jash',
+            title: 'Rice prices are expected to peak next month! Consider storing your harvest and selling in September for higher profits',
             timeAgo: '4h',
-            alertMsg: 'This affects your crop'
+            alertMsg: 'Optimal Selling Time'
         },
         {
-            author: 'Number 10',
-            title: 'Prices of wheat are subject to increase 20% in the next quarter',
-            timeAgo: '4h',
-            alertMsg: 'This affects your crop'
+            author: 'By Abhishek',
+            title: 'Alert: Rice prices are predicted to decrease by 10% in the coming weeks. You may want to sell your stock now to avoid lower returns.',
+            timeAgo: '2h',
+            alertMsg: 'Price Drop Alert'
         },
         {
-            author: 'Number 10',
-            title: 'Prices of wheat are subject to increase 20% in the next quarter',
-            timeAgo: '4h',
-            alertMsg: 'This affects your crop'
+            author: 'By Pranshu',
+            title: 'Good news! Based on future price trends, now is a great time to secure a pre-selling agreement. Lock in a stable price and reduce your risk.',
+            timeAgo: '3h',
+            alertMsg: 'Contract Farming Opportunity'
         },
         {
-            author: 'Number 10',
-            title: 'Prices of wheat are subject to increase 20% in the next quarter',
-            timeAgo: '4h',
-            alertMsg: 'This affects your crop'
+            author: 'By Dhruv',
+            title: 'Consider diversifying your crops. Forecasts show potential price drops for rice, but maize prices are expected to rise',
+            timeAgo: '1h',
+            alertMsg: 'Diversification Recommendation'
         },
         {
-            author: 'Number 10',
-            title: 'Prices of wheat are subject to increase 20% in the next quarter',
-            timeAgo: '4h',
-            alertMsg: 'This affects your crop'
+            author: 'By Aditya',
+            title: 'Plan ahead: Rice prices are stable, so now is a good time to invest in fertilizers and seeds for the next season',
+            timeAgo: '0h',
+            alertMsg: 'Financial Planning Reminder'
         },
         {
             author: 'Grace Aroma',
