@@ -2,6 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
+
+import { Suspense } from 'react'
+
+
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
 import StatePrice from '@/components/(pyserver)/StatePrice';
 
@@ -11,6 +15,7 @@ function Dash() {
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
 
     return (
+        <Suspense>
         <body className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
             <Sidefarm />
             <main className="ml-60 pt-10 max-h-screen overflow-auto">
@@ -23,6 +28,7 @@ function Dash() {
                 </div>
             </main>
         </body>
+        </Suspense>
     )
 }
 
