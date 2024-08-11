@@ -19,16 +19,16 @@ export default function Feauture(){
                         </div>
                         <div className="mx-auto grid max-w-5xl items-stretch gap-6 py-12 lg:gap-12 lg:grid-cols-3">
                             <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Predictive Analytics</h3>
-                                <p className="text-black flex-grow">Our advanced algorithms analyze market trends and environmental data to predict future prices and yields.</p>
+                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Crop Selection Advice</h3>
+                                <p className="text-black flex-grow">Using a Random Forest Classifier we predicted which crop the farmer should grow based on various parameters like N, K & P content, pH, humidity, and rainfall.</p>
                             </div>
                             <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Real-time Insights</h3>
-                                <p className="text-black flex-grow">Get instant access to up-to-date information on commodity prices, weather patterns, and market conditions.</p>
+                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Agricultural Price Prediction</h3>
+                                <p className="text-black flex-grow">Using SARIMA - Seasonal Autoregressive Integrated Moving Average we predicted future prices which will help farmers make informed decisions about their finances.</p>
                             </div>
                             <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Customizable Alerts</h3>
-                                <p className="text-black flex-grow text">Set custom alerts to stay informed about changes in market and optimize your planting and harvesting schedules.</p>
+                                <h3 className="text-xl font-bold text-[black] mx-auto mb-4">Fertilizer Recommendations</h3>
+                                <p className="text-black flex-grow text">The system monitors nutrient levels and alerts the farmer if any nutrients are deficient or excessive and then suggests best practices & fertilizers to grow the crop.</p>
                             </div>
                         </div>
                     </div>
