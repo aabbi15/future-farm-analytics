@@ -29,6 +29,8 @@ const cropsOptions = [
     { value: 'cotton', label: 'Cotton' },
     { value: 'jute', label: 'Jute' },
     { value: 'coffee', label: 'Coffee' },
+    { value: 'wheat', label: 'Wheat' },
+    { value: 'tomato', label: 'Tomato' }
 ];
 
 export default function ProfileCard() {
@@ -107,7 +109,7 @@ export default function ProfileCard() {
                                 </button>
                                 {showCropForm && (
                                     <div className="mt-5 w-full p-2">
-                                        <Select isMulti options={cropsOptions} value={selectedCrops} onChange={setSelectedCrops} className="mb-2" />
+                                        <Select isMulti options={cropsOptions} value={selectedCrops} onChange={setSelectedCrops} className="mb-2 h-10" />
                                         <button onClick={handleAddCrops} className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Save Crops</button>
                                     </div>
                                 )}

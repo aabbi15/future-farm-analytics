@@ -15,7 +15,7 @@ function Dash() {
     const [userName, setUserName] = useState('');
     const [userState, setUserState] = useState('');
     const [userCity, setUserCity] = useState('');
-
+    const [userState, setUserState] = useState('');
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
@@ -31,8 +31,9 @@ function Dash() {
                         const userName = user.displayName || 'Kristin';
                         const userState = userDoc.data().state || 'Bihar';
                         const userCity = userDoc.data().city || 'Gandhinagar';
-                        setUserCity(userCity);
+                        const userState = userDoc.data().state || 'Bihar';
                         setUserName(userName);
+                        setUserCity(userCity);
                         setUserState(userState);
                     }
                 } catch (error) {

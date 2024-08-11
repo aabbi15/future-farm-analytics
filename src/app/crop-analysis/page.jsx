@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import Sidefarm from "@/components/(farmer-dash)/sidebar";
