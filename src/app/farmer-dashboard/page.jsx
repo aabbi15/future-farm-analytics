@@ -13,7 +13,9 @@ import WeatherCard from '@/components/(farmer-dash)/weathercard';
 
 function Dash() {
     const [userName, setUserName] = useState('');
+    const [userState, setUserState] = useState('');
     const [userCity, setUserCity] = useState('');
+
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
@@ -27,9 +29,11 @@ function Dash() {
 
                     if (userDoc.exists()) {
                         const userName = user.displayName || 'Kristin';
+                        const userState = userDoc.data().state || 'Bihar';
                         const userCity = userDoc.data().city || 'Gandhinagar';
-                        setUserName(userName);
                         setUserCity(userCity);
+                        setUserName(userName);
+                        setUserState(userState);
                     }
                 } catch (error) {
                     console.error("Error fetching user data: ", error);
@@ -38,6 +42,16 @@ function Dash() {
         });
         return () => unsubscribe();
     }, []);
+    const companies = [
+        "Google",
+        "Microsoft",
+        "Amazon",
+        "Netflix",
+        "YouTube",
+        "Instagram",
+        "Uber",
+        "Spotify",
+    ];
 
     return (
         <div className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
@@ -53,7 +67,7 @@ function Dash() {
                                         <div className="text-gray-400 text-xs">
                                             <Image src="/location-sign.png" alt="avatar" width="21" height="21" />
                                         </div>
-                                        <div className="pl-2"> {userCity} </div>
+                                        <div className="pl-2"> {userState} </div>
                                         <div className="h-[20px] border-l mx-4"></div>
                                         <div className="-mt-2 -ml-1">
                                             <DateDisplay />
@@ -70,7 +84,7 @@ function Dash() {
                             <div className="grid grid-cols-2 gap-x-20">
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Stats</h2>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-2 gap-4 mb-4">
                                         <div className="col-span-2">
                                             <div className="p-4 bg-green-100 rounded-xl">
                                                 <div className="font-bold text-xl text-gray-800 leading-none">See the latest news from <br /> <div className="pt-1.5"> Future Farm! </div></div>
@@ -90,6 +104,7 @@ function Dash() {
                                             <div className="mt-2">Latest Potato Price</div>
                                         </div>
                                     </div>
+                                    <WeatherCard loc={userCity} />
                                 </div>
                                 <div>
                                     <h2 className="text-2xl font-bold mb-4">Latest Notifications for you</h2>
@@ -116,8 +131,32 @@ function Dash() {
                                             </div>
                                         </div>
                                     </div>
+                                     <section id="companies">
+                                        <div class="py-14">
+                                            <div class="container mx-auto px-4 md:px-8">
+                                                <div class="relative mt-6">
+                                                    <div class="group flex overflow-hidden p-2 [--gap:1rem] [gap:var(--gap)] flex-row max-w-full [--duration:40s]">
+                                                        <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+                                                            <p>HI</p>
+                                                        </div>
+                                                        <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+                                                            <p>HI</p>
+                                                        </div>
+                                                        <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+                                                            <p>HI</p>
+                                                        </div>
+                                                        <div class="flex shrink-0 justify-around [gap:var(--gap)] animate-marquee flex-row">
+                                                            <p>HI</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pointer-events-none absolute inset-y-0 left-0 h-full w-1/3 bg-gradient-to-r from-white dark:from-black"></div>
+                                                    <div class="pointer-events-none absolute inset-y-0 right-0 h-full w-1/3 bg-gradient-to-l from-white dark:from-black"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
-                                <WeatherCard loc={userCity} />
+
                             </div>
                         </div>
                     </div>

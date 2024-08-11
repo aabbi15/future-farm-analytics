@@ -14,7 +14,7 @@ import {
     Label
 } from 'recharts';
 import { Poppins } from "next/font/google";
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { auth, db } from '@/firebase/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -27,9 +27,6 @@ const font = Poppins({
 const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
 
 
- 
-  
-
 
 export default function StatePrice() {
     const [cropToPredict, setCropToPredict] = useState('rice');
@@ -41,17 +38,10 @@ export default function StatePrice() {
     const searchParams = useSearchParams()
     let cropname = searchParams.get('currcrop');
 
-    if(!cropname){ cropname = "rice";}
-
-
-    useEffect(() => {
-
-    
-    setCropToPredict(cropname);
-
-    }, []);
+    if(!searchParams.get('currcrop')){ cropname = "rice";}
 
     useEffect(() => {
+        setCropToPredict(cropname);
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 try {
