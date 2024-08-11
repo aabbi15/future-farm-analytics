@@ -38,6 +38,8 @@ const cropsOptions = [
     { value: 'cotton', label: 'Cotton' },
     { value: 'jute', label: 'Jute' },
     { value: 'coffee', label: 'Coffee' },
+    { value: 'wheat', label: 'Wheat' },
+    { value: 'tomato', label: 'Tomato' }
 ];
 
 const SignupForm = () => {

@@ -1,14 +1,10 @@
-export default function Contact(){
-
-
+export default function Contact() {
     return (
-
-        <div class="mt-6 max-w-6xl max-lg:max-w-3xl mx-auto bg-[#124b3d] rounded-lg">
+        <div class="mt-6 mb-14 max-w-6xl max-lg:max-w-3xl mx-auto bg-[#124b3d] rounded-lg">
             <div class="grid lg:grid-cols-2 items-center gap-14 sm:p-8 p-4 font-[sans-serif]">
                 <div>
                     <h1 class="text-4xl font-bold text-white">Get in Touch</h1>
-                    <p class="text-sm text-gray-300 mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project  and provide help.</p>
-
+                    <p class="text-sm text-gray-300 mt-4 leading-relaxed">Have some big idea or brand to develop and need help? Then reach out we&apos;d love to hear about your project  and provide help.</p>
                     <ul class="mt-12 space-y-8">
                         <li class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff'
@@ -39,7 +35,6 @@ export default function Contact(){
                             </a>
                         </li>
                     </ul>
-
                     <ul class="flex mt-12 space-x-4">
                         <li class="bg-[#408b70] hover:bg-[#a91079e2] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                             <a href="javascript:void(0)">
@@ -73,16 +68,7 @@ export default function Contact(){
                         </li>
                     </ul>
                 </div>
-
                 <div class="bg-gray-100 p-6 rounded-lg">
-                    <p class="text-sm font-semibold text-gray-800">I am a...</p>
-
-                    <div class="space-y-4 max-lg:mt-4">
-                        <button type="button" class="px-4 py-2 rounded-lg bg-[#408b70] text-white text-sm tracking-wider font-medium outline-none border-2 border-[#408b70] mr-4">Farmer</button>
-                        <button type="button" class="px-4 py-2 rounded-lg bg-transparent text-gray-800 text-sm tracking-wider font-medium outline-none border-2 border-gray-300 mr-4">Investor</button>
-                        <button type="button" class="px-4 py-2 rounded-lg bg-transparent text-gray-800 text-sm tracking-wider font-medium outline-none border-2 border-gray-300">Student</button>
-                    </div>
-
                     <form class="mt-8 space-y-4">
                         <input type='text' placeholder='Name'
                             class="w-full rounded-lg py-3 px-4 text-gray-800 text-sm outline-[#408b70]" />
