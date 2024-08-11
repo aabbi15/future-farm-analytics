@@ -160,7 +160,7 @@ function Page() {
                 }
                 const data = await response.json();
                 // setWeatherData(data.current);
-                console.log(data.current);
+                // console.log(data.current);
                 setTemperature(data.current.temp_c);
         setRainfall(data.current.cloud);
         setHumidity(data.current.humidity);
@@ -179,6 +179,11 @@ function Page() {
                 const response = await axios.post("http://127.0.0.1:5000/crop-predict", { nitrogen, phosphorous, potassium, temperature, humidity, ph, rainfall });
                 setSuggestedCrop(response.data.crop);
                 setCurrCrop(optimaldata[response.data.crop]);
+
+                osetNitrogen(optimaldata[response.data.crop].N);
+                osetPhosphorous(optimaldata[response.data.crop].P);
+                osetPotassium(optimaldata[response.data.crop].K);
+                console.log(currcrop);
             } catch (error) {
                 console.error("Error fetching crop prediction:", error);
             }
@@ -190,9 +195,9 @@ function Page() {
             // e.preventDefault();
             try {
                 const response = await axios.post("http://127.0.0.1:5000/fertilizer-predict", { cropname:suggestedCrop ,nitrogen:currcrop.N, phosphorous:currcrop.P, potassium: currcrop.K });
-                setText(response);
+                setText(response.data.recommendation);
     
-                console.log(response);
+                console.log(response.data);
             } catch (error) {
                 console.error("Error fetching crop prediction:", error);
             }
@@ -241,7 +246,7 @@ function Page() {
                       <form onSubmit={handleFormSubmit2} className="grid gap-4">
                         {/* Form Inputs */}
                         <div className="flex flex-col gap-2">
-                          <label className="text-sm font-semibold">Nitrogen (%)</label>
+                          <label className="text-sm font-semibold">Nitrogen Content</label>
                           <input
                             type="number"
                             value={nitrogen}
@@ -250,7 +255,7 @@ function Page() {
                           />
                         </div>
                         <div className="flex flex-col gap-2">
-                          <label className="text-sm font-semibold">Phosphorous (%)</label>
+                          <label className="text-sm font-semibold">Phosphorous Content</label>
                           <input
                             type="number"
                             value={phosphorous}
@@ -259,7 +264,7 @@ function Page() {
                           />
                         </div>
                         <div className="flex flex-col gap-2">
-                          <label className="text-sm font-semibold">Potassium (%)</label>
+                          <label className="text-sm font-semibold">Potassium Content</label>
                           <input
                             type="number"
                             value={potassium}
@@ -318,7 +323,7 @@ function Page() {
                             N
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{nitrogen}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{nitrogen} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Nitrogen Level
                             </div>
@@ -331,7 +336,7 @@ function Page() {
                             P
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{phosphorous}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{phosphorous} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Phosphorous Level
                             </div>
@@ -344,7 +349,7 @@ function Page() {
                             K
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{potassium}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{potassium} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Potassium Level
                             </div>
@@ -403,25 +408,23 @@ function Page() {
                                     <h1 className="text-2xl font-bold">
                                         {suggestedCrop ? `According to our Model, the most suitable crop for your soil and weather is:` : `Please enter the soil data to get a crop recommendation`}
                                     </h1>
-                                    {suggestedCrop && (
-                                        <div className="grid gap-4 mt-2">
-                                            <div className="flex gap-5 justify-center pt-5 items-center">
-                                                <div className="w-24 h-24 rounded-full border-4 border-gray-700 overflow-hidden">
-                                                    <img src="farmland.png" alt="crop" className="object-cover w-full h-full" />
-                                                </div>
-                                                <div className="font-bold text-4xl text-[#124b3d]">{suggestedCrop}</div>
-                                            </div>
-                                            <div className="flex justify-center mt-10 -mb-10">
-                                                <button className="cursor-pointer text-xs transition-all bg-green-500 text-black px-4 py-2 rounded-lg border-green-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-                                                    Learn how to grow {suggestedCrop}
-                                                </button>
-                                            </div>
-                                        </div>
+                                    {suggestedCrop && ( 
+                                      <div>
+
+                                        {text}
+                                      </div>
+                                      
+                                      
                                     )}
                                 </div>
 
+                               
+                               
                                 <div className="col-span-2 p-4 rounded-lg border bg-green-100 border-gray-800">
                   <h1 className="text-2xl font-bold">{editMode ? "Edit Soil Data" : "Optimal Soil Nutrients"}</h1>
+                  
+                  
+                  
                   <div className="grid gap-4 mt-2">
                     {editMode ? (<div></div>) : (
                       // Soil Data Display
@@ -432,7 +435,7 @@ function Page() {
                             N
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{onitrogen}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{onitrogen} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Nitrogen Level
                             </div>
@@ -445,7 +448,7 @@ function Page() {
                             P
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{ophosphorous}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{ophosphorous} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Phosphorous Level
                             </div>
@@ -458,7 +461,7 @@ function Page() {
                             K
                           </div>
                           <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{opotassium}%</h2>
+                            <h2 className="font-semibold leading-none line-clamp-2">{opotassium} </h2>
                             <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
                               Potassium Level
                             </div>
@@ -466,29 +469,12 @@ function Page() {
                         </div>
 
                         {/* pH Level */}
-                        <div className="flex gap-2 items-center">
-                          <div className="bg-green-500 w-9 h-9 ring-2 ring-green-200 text-lg rounded-full text-center flex justify-center items-center font-extrabold">
-                            pH
-                          </div>
-                          <div className="grid gap-1 text-sm flex-1">
-                            <h2 className="font-semibold leading-none line-clamp-2">{oph}</h2>
-                            <div className="text-xs text-gray-500 line-clamp-1 dark:text-gray-400">
-                              Soil pH Level
-                            </div>
-                          </div>
-                        </div>
+                       
                       </>
                     )}
                   </div>
 
-                  <div className="flex justify-end mt-5">
-                    <button
-                      onClick={() => setEditMode(!editMode)}
-                      className="cursor-pointer text-xs transition-all bg-blue-500 text-white px-4 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]"
-                    >
-                      {editMode ? "Cancel" : "Edit Data"}
-                    </button>
-                  </div>
+                  
                 </div>
 
                             </div>

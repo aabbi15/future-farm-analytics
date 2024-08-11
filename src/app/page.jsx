@@ -4,6 +4,11 @@ import { useEffect, useState } from 'react';
 import { auth } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import Contact from '@/components/(homepage)/contactus';
+import Aboutus from '@/components/(homepage)/aboutus';
+import Feauture from '@/components/(homepage)/features';
+import Joinus from '@/components/(homepage)/joinus';
+import Whyus from '@/components/(homepage)/whyus';
+import Myfooter from '@/components/(homepage)/myfooter';
 
 function LeafIcon(props) {
     return (
@@ -83,100 +88,23 @@ export default function Home() {
                         <div className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
                     </div>
                 </section>
-                <section id="keyfeatures" className="w-full flex justify-center items-center py-12 md:py-24 lg:py-28 bg-[#f0f4d4]">
-                    <div className="container px-4 md:px-6">
-                        <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                            <div className="space-y-2">
-                                <div className="inline-block rounded-lg bg-[#124b3d] px-3 py-1 text-sm text-white">Key Features</div>
-                                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-[#124b3d]">
-                                    Unlock the Power of Data-Driven Farming
-                                </h2>
-                                <p className="max-w-[900px] text-[#124b3d] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Our platform provides real-time insights and predictive analytics to help you make informed decisions
-                                    and maximize your yields.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="mx-auto grid max-w-5xl items-stretch gap-6 py-12 lg:gap-12 lg:grid-cols-3">
-                            <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[#124b3d] mx-auto mb-4">Predictive Analytics</h3>
-                                <p className="text-black flex-grow">Our advanced algorithms analyze market trends and environmental data to predict future prices and yields.</p>
-                            </div>
-                            <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[#124b3d] mx-auto mb-4">Real-time Insights</h3>
-                                <p className="text-black flex-grow">Get instant access to up-to-date information on commodity prices, weather patterns, and market conditions.</p>
-                            </div>
-                            <div className="bg-[#b1d4c7] rounded-xl pt-4 pb-4 pl-4 flex flex-col gap-1 h-full">
-                                <h3 className="text-xl font-bold text-[#124b3d] mx-auto mb-4">Customizable Alerts</h3>
-                                <p className="text-black flex-grow">Set custom alerts to stay informed about changes in market and optimize your planting and harvesting schedules.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <Aboutus />
+
+                <div className='py-8'></div>
+
+                <Feauture/>
+
+                <Whyus/>
+
                 {!isSignedIn && (
-                    <section id="joinus" className="w-full pb-24 pt-24 bg-[#124b3d] text-[#f0f4d4] border-t">
-                        <div className="flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
-                            <div className="space-y-3">
-                                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-                                    Join the Future of Farming
-                                </h2>
-                                <p className="mx-auto max-w-[600px] md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                                    Sign up for our platform and start making data-driven decisions to improve your yields and profitability.
-                                </p>
-                            </div>
-                            <div className="mx-auto w-full max-w-sm space-y-2">
-                                <a href="/signup" className="rounded-md px-3.5 py-2.5 text-sm font-semibold text-[#124b3d] shadow-sm bg-[#f0f4d4] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                    Join Us
-                                </a>
-                                <p className="text-xs pt-2">
-                                    Sign up to get started with Farm Future Analytics.{" "}
-                                    <a href="#" className="underline underline-offset-2">
-                                        Terms &amp; Conditions
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </section>
+                    <Joinus/>
                 )}
-                {/* <section id="contactus" className="w-full pt-[120px] pb-24 bg-[#f0f4d4] border-t">
-                    <div className="flex flex-col items-center justify-center gap-4 px-4 text-center md:px-6">
-                        <div className="space-y-3 bg-[#b1d4c7] rounded-xl p-4">
-                            <div className="space-y-3 bg-[#b1d4c7] rounded-xl p-4">
-                                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight text-[#124b3d]">
-                                    Contact Us
-                                </h2>
-                                <p className="mx-auto max-w-[600px] text-[#124b3d]">
-                                    Got a technical issue? Want to send feedback about a beta feature? Need details about our Business plan? Let us know.
-                                </p>
-                            </div>
-                            <div className="mx-auto w-fit space-y-2">
-                                <div className="pt-2 text-lg text-[#124b3d]">
-                                    <p>Address       : F114, HoR MEN, DA-IICT</p>
-                                    <p>Phone Number  : +91 6354152418</p>
-                                    <p>Email Address : 202301143@daiict.ac.in</p>
-                                    <p>Website       : localhost:3000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> */}
+                
 
-
+                <div className='py-24'></div>
                 <Contact/>
-                <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t bg-[#f0f4d4]">
-                    <p className="text-xs text-[#124b3d]">&copy; 2024 Farm Future Analytics. All rights reserved.</p>
-                    <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-                        <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
-                            Terms of Service
-                        </a>
-                        <a href="#" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
-                            Privacy
-                        </a>
-                        <a href="#contactus" className="text-xs hover:underline underline-offset-4 text-[#124b3d]">
-                            Contact
-                        </a>
-                    </nav>
-                </footer>
+                
+                <Myfooter/>
             </div>
         </div>
     );
