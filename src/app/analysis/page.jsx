@@ -40,19 +40,19 @@ const RenderLineChart = () => {
     });
 
     useEffect(() => {
-        let data = fetch('/2014-2024.json')
+        let data = fetch('/rice.json')
             .then(res => res.json())
             .then(data => {
-                if (state && data.Sheet1) {
+                if (state && data) {
                     if (state == "Other") {
-                        const filteredData = data.Sheet1.map(entry => ({
+                        const filteredData = data.map(entry => ({
                             date: entry.Date,
                             value: entry["All India Average"]
                         }));
                         setStateData(filteredData);
                     }
                     else {
-                        const filteredData = data.Sheet1.map(entry => ({
+                        const filteredData = data.map(entry => ({
                             date: entry.Date,
                             value: entry[state]
                         }));
