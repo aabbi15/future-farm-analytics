@@ -15,7 +15,6 @@ function Dash() {
     const [userName, setUserName] = useState('');
     const [userState, setUserState] = useState('');
     const [userCity, setUserCity] = useState('');
-    const [userState, setUserState] = useState('');
 
     const router = useRouter();
     onAuthStateChanged(getAuth(), (user) => !user && router.push("/"));
@@ -31,7 +30,6 @@ function Dash() {
                         const userName = user.displayName || 'Kristin';
                         const userState = userDoc.data().state || 'Bihar';
                         const userCity = userDoc.data().city || 'Gandhinagar';
-                        const userState = userDoc.data().state || 'Bihar';
                         setUserName(userName);
                         setUserCity(userCity);
                         setUserState(userState);
@@ -43,16 +41,6 @@ function Dash() {
         });
         return () => unsubscribe();
     }, []);
-    const companies = [
-        "Google",
-        "Microsoft",
-        "Amazon",
-        "Netflix",
-        "YouTube",
-        "Instagram",
-        "Uber",
-        "Spotify",
-    ];
 
     return (
         <div className="relative bg-[#f0f4d4] overflow-hidden max-h-screen">
@@ -132,7 +120,7 @@ function Dash() {
                                             </div>
                                         </div>
                                     </div>
-                                     <section id="companies">
+                                     {/* <section id="companies">
                                         <div class="py-14">
                                             <div class="container mx-auto px-4 md:px-8">
                                                 <div class="relative mt-6">
@@ -155,7 +143,7 @@ function Dash() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </section>
+                                    </section> */}
                                 </div>
 
                             </div>
