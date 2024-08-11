@@ -5,6 +5,7 @@ import { auth } from '@/firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, } from 'recharts';
 import { Poppins } from "next/font/google";
+import Header from '@/components/(homepage)/header';
 
 const font = Poppins({
     weight: '800',
@@ -75,25 +76,7 @@ const RenderLineChart = () => {
 
     return (
         <div className='flex h-[100dvh] justify-center items-center'>
-            <header className="absolute inset-x-0 top-0 z-50">
-                <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                    <div className="flex lg:flex-1">
-                        <a href="/" className="-m-1.5 p-1.5">
-                            <span className="sr-only">Farm Future Analytics</span>
-                            <LeafIcon className="h-8 w-auto text-[#124b3d]" />
-                        </a>
-                    </div>
-                    <div className="lg:flex lg:gap-x-12">
-                        <a href="/#keyfeatures" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Features</a>
-                        <a href="/analysis" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Analysis</a>
-                        {!isSignedIn && <a href="#joinus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Join</a>}
-                        <a href="/#contactus" className="text-sm hover:underline underline-offset-4 font-semibold leading-6 text-[#124b3d]">Contact</a>
-                    </div>
-                    <div className="lg:flex lg:flex-1 lg:justify-end">
-                        {!isSignedIn ? <a href="/signup" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Sign Up</a> : <a href="/farmer-dashboard" className="rounded-md bg-[#124b3d] px-4 py-2 text-sm font-semibold text-white shadow-sm">Dashboard</a>}
-                    </div>
-                </nav>
-            </header>
+            <Header/>
             <section className='relative h-full w-full isolate px-6 pt-20 lg:px-8'>
                 <div className="flex h-full w-full items-center justify-center">
                     <div className="grid h-full w-full gap-4 bg-transparent p-2 grid-cols-4 grid-rows-7 rounded-lg">

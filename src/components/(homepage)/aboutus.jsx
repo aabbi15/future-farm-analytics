@@ -14,8 +14,8 @@ export default function Aboutus(){
           <p>We combine deep agricultural expertise with cutting-edge technology to deliver solutions that are both effective and efficient, ensuring that you get the results you need, when you need them.</p>
         </div>
         <div class="grid grid-cols-2 gap-4 mt-8">
-            <img class="w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-2.png" alt="office content 1"/>
-            <img class="mt-4 w-full lg:mt-10 rounded-lg" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/office-long-1.png" alt="office content 2"/>
+            <img class="w-full rounded-lg" src="/home1.jpg" alt="office content 1"/>
+            <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/home2.jpg" alt="office content 2"/>
         </div>
     </div>
 </section>
