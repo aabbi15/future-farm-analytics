@@ -75,25 +75,34 @@ def predict_crop_price():
     
     return jsonify(pred_dict)
 
+
 @app.route('/fertilizer-predict', methods=['POST'])
 def fert_recommend():
     # Retrieve JSON data from request
     data = request.get_json()
-    crop_name = str(data['cropname'])
-    N = int(data['nitrogen'])
-    P = int(data['phosphorous'])
-    K = int(data['pottasium'])
-    # ph = float(data['ph'])
+    crop_name = str(data.get('cropname', ''))
+    N = int(data.get('nitrogen', 0))
+    P = int(data.get('phosphorous', 0))
+    K = int(data.get('potassium', 0))
 
     df = pd.read_csv('fertilizer_csv.csv')
 
-    nr = df[df['Crop'] == crop_name]['N'].iloc[0]
-    pr = df[df['Crop'] == crop_name]['P'].iloc[0]
-    kr = df[df['Crop'] == crop_name]['K'].iloc[0]
+    # Search for the crop in the CSV file
+    crop_data = df[df['Crop'].str.lower() == crop_name.lower()]
 
+    if crop_data.empty:
+        return jsonify({'error': 'Crop data not found'}), 404
+
+    # Extract the recommended values of N, P, and K for the crop
+    nr = crop_data['N'].values[0]
+    pr = crop_data['P'].values[0]
+    kr = crop_data['K'].values[0]
+
+    # Calculate nutrient differences
     n = nr - N
     p = pr - P
     k = kr - K
+    
     temp = {abs(n): "N", abs(p): "P", abs(k): "K"}
     max_value = temp[max(temp.keys())]
     if max_value == "N":
@@ -114,43 +123,7 @@ def fert_recommend():
 
     response = Markup(str(fertilizer_dic[key]))
 
-    return render_template('fertilizer-result.html', recommendation=response)
-
-@app.route('/max-price-notification', methods=['POST'])
-def predict_max_rice():
-    data = request.json
-    state = data.get('state', 'Bihar')
-    crop = data.get('crop', 'rice')
-    
-    # Construct the filename based on the crop name
-    filename = f'{crop}.xlsx'
-    try:
-        df = pd.read_excel(filename, index_col='Date', parse_dates=True)
-    except FileNotFoundError:
-        return jsonify({'error': f'File {filename} not found'}), 404
-    
-    # Build and fit the SARIMAX model
-    model = sm.tsa.statespace.SARIMAX(df[state], order=(0, 1, 0), seasonal_order=(0, 1, 1, 12))
-    results = model.fit()
-    
-    # Make predictions
-    pred = results.get_prediction(start=pd.to_datetime('2024-08-01'), end=pd.to_datetime('2024-12-01'), dynamic=False)
-    pred_mean = pred.predicted_mean
-
-    # Convert predictions to a DataFrame
-    pred_df = pd.DataFrame(pred_mean, columns=['Price'])
-    pred_df.index.name = 'Date'
-    
-    # Get the maximum price
-    max_price_row = pred_df.loc[pred_df['Price'].idxmax()]
-    
-    # Create a dictionary with the date and price of the maximum price
-    pred_dict = {
-        'Date': max_price_row.name.strftime("%d/%m/%Y"),
-        'Price': max_price_row['Price']
-    }
-    
-    return jsonify(pred_dict)
+    return jsonify({'recommendation': response})
 
 if __name__ == '__main__':
     app.run(debug=True)
