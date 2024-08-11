@@ -26,11 +26,6 @@ const font = Poppins({
 
 const states = ["Bihar", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Odisha", "Punjab", "Rajasthan", "Tamil Nadu", "Uttar Pradesh", "West Bengal", "Other"];
 
-
- 
-  
-
-
 export default function StatePrice() {
     const [cropToPredict, setCropToPredict] = useState('rice');
     const [state, setState] = useState('');
@@ -41,13 +36,10 @@ export default function StatePrice() {
     const searchParams = useSearchParams()
     let cropname = searchParams.get('currcrop');
 
-    if(!cropname){ cropname = "rice";}
-
+    if (!cropname) { cropname = "rice"; }
 
     useEffect(() => {
-
-    
-    setCropToPredict(cropname);
+        setCropToPredict(cropname);
 
     }, []);
 
@@ -73,7 +65,7 @@ export default function StatePrice() {
                                         const last12Elements = filteredData.slice(-12);
                                         setStateData(last12Elements);
                                         (async () => {
-                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop:cropToPredict });
+                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop: cropToPredict });
                                             const arr = [];
                                             for (const key in response.data) {
                                                 if (response.data.hasOwnProperty(key)) {
@@ -93,7 +85,7 @@ export default function StatePrice() {
                                         const last12Elements = filteredData.slice(-12);
                                         setStateData(last12Elements);
                                         (async () => {
-                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop:cropToPredict });
+                                            const response = await axios.post('http://127.0.0.1:5000/crop-price-predict', { state: userState, crop: cropToPredict });
                                             const arr = [];
                                             for (const key in response.data) {
                                                 if (response.data.hasOwnProperty(key)) {
@@ -137,13 +129,11 @@ export default function StatePrice() {
     return (
         <div>
             <h1 className={`text-2xl font-bold tracking-tight text-[#124b3d] ${font.className}`}>{state} Crop Price Forecast</h1>
-
             <section className='flex justify-center items-center px-6 gap-10'>
-                <a href='/crop-analysis?currcrop=wheat'><button className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Wheat</button> </a>
-                <a href='/crop-analysis?currcrop=rice'> <button className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Rice</button> </a>
-                <a href='/crop-analysis?currcrop=tomato'> <button className="w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-[#FF5800] before:to-[#ff9359] before:transition-all before:duration-500 before:ease-in-out before:z-[-1] before:rounded-xl hover:before:left-0 text-[#fff]">Tomato</button></a>
+                <a href='/crop-analysis?currcrop=wheat'><button className={`w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg ${cropToPredict.toLocaleLowerCase() === "wheat" ? 'bg-[#ff5800]' : ''} text-[#fff]`}>Wheat</button></a>
+                <a href='/crop-analysis?currcrop=rice'><button className={`w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg ${cropToPredict.toLocaleLowerCase() === "rice" ? 'bg-[#ff5800]' : ''} text-[#fff]`}>Rice</button></a>
+                <a href='/crop-analysis?currcrop=tomato'><button className={`w-[150px] bg-[#008B8B] h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer relative overflow-hidden transition-all duration-500 ease-in-out shadow-md hover:scale-105 hover:shadow-lg ${cropToPredict.toLocaleLowerCase() === "tomato" ? 'bg-[#ff5800]' : ''} text-[#fff]`}>Tomato</button></a>
             </section>
-
             <div className='flex h-[100dvh] justify-center items-center'>
                 <section className='relative h-full w-full isolate px-6 pt-2 lg:px-8'>
                     <div className="flex h-full w-full items-center justify-center">
